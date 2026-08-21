@@ -2045,25 +2045,35 @@ button:active, .btn:active, .cat-tab:active {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
     scrollbar-width: none;
-    gap: 0.45rem;
-    padding: 0.25rem 0.25rem 0.5rem;
-    margin: 0 -0.5rem;
-    padding-left: 0.5rem;
-    scroll-snap-type: x mandatory;
+    gap: 0.5rem;
+    padding: 0.35rem 0.25rem 0.65rem;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
   }
 
   .category-tabs::-webkit-scrollbar {
     display: none;
+    width: 0;
+    height: 0;
   }
 
   .cat-tab {
     flex-shrink: 0;
-    scroll-snap-align: start;
-    padding: 0.45rem 0.95rem;
-    font-size: 0.82rem;
+    padding: 0.5rem 1.05rem;
+    font-size: 0.84rem;
     white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .sorting-controls {

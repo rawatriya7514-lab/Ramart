@@ -401,7 +401,28 @@ function setupEventListeners() {
         e.target.classList.add('active');
         activeCategory = e.target.dataset.category;
         renderProducts();
+        try {
+          e.target.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        } catch (err) {}
       }
+    });
+
+    // Drag-to-scroll for desktop & seamless swipe
+    let isDown = false;
+    let startX, scrollLeft;
+    categoryTabs.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - categoryTabs.offsetLeft;
+      scrollLeft = categoryTabs.scrollLeft;
+    });
+    categoryTabs.addEventListener('mouseleave', () => { isDown = false; });
+    categoryTabs.addEventListener('mouseup', () => { isDown = false; });
+    categoryTabs.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - categoryTabs.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      categoryTabs.scrollLeft = scrollLeft - walk;
     });
   }
 
