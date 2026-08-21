@@ -198,12 +198,31 @@ button:active, .btn:active, .cat-tab:active {
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.65rem;
   font-size: 1.7rem;
   font-weight: 900;
   text-decoration: none;
   letter-spacing: 0.5px;
   position: relative;
+}
+
+.brand-logo-img {
+  height: 40px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.45));
+  transition: var(--transition);
+  display: block;
+}
+
+.brand-logo-img:hover {
+  filter: drop-shadow(0 0 18px rgba(220, 38, 38, 0.8));
+  transform: scale(1.04);
+}
+
+.footer-logo .brand-logo-img {
+  height: 44px;
 }
 
 .logo-icon {
@@ -1862,6 +1881,11 @@ button:active, .btn:active, .cat-tab:active {
 
   .logo {
     font-size: 1.45rem;
+  }
+
+  .brand-logo-img {
+    height: 32px;
+    max-width: 100px;
   }
 
   .search-wrapper {
