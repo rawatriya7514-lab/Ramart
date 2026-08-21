@@ -216,10 +216,10 @@ button:active, .btn:active, .cat-tab:active {
 .brand-logo-img,
 .logo img {
   display: block;
-  height: 38px !important;
-  max-height: 38px !important;
+  height: 40px !important;
+  max-height: 40px !important;
   width: auto !important;
-  max-width: 145px !important;
+  max-width: 155px !important;
   object-fit: contain !important;
   filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.45));
   transition: var(--transition);
@@ -233,9 +233,10 @@ button:active, .btn:active, .cat-tab:active {
 
 .footer-logo .brand-logo-img,
 .footer-logo img {
-  height: 42px !important;
-  max-height: 42px !important;
-  max-width: 155px !important;
+  height: 52px !important;
+  max-height: 52px !important;
+  max-width: 180px !important;
+  margin-bottom: 0.85rem !important;
 }
 
 .logo-icon {
@@ -1912,14 +1913,22 @@ button:active, .btn:active, .cat-tab:active {
   }
 
   .logo {
-    max-height: 34px;
+    max-height: 38px;
   }
 
   .brand-logo-img,
   .logo img {
-    height: 30px !important;
-    max-height: 30px !important;
-    max-width: 110px !important;
+    height: 34px !important;
+    max-height: 34px !important;
+    max-width: 125px !important;
+  }
+
+  .footer-logo .brand-logo-img,
+  .footer-logo img {
+    height: 48px !important;
+    max-height: 48px !important;
+    max-width: 165px !important;
+    margin-bottom: 0.75rem !important;
   }
 
   .search-wrapper {
@@ -2355,9 +2364,15 @@ button:active, .btn:active, .cat-tab:active {
 @media (max-width: 380px) {
   .brand-logo-img,
   .logo img {
-    height: 26px !important;
-    max-height: 26px !important;
-    max-width: 95px !important;
+    height: 28px !important;
+    max-height: 28px !important;
+    max-width: 105px !important;
+  }
+  .footer-logo .brand-logo-img,
+  .footer-logo img {
+    height: 44px !important;
+    max-height: 44px !important;
+    max-width: 150px !important;
   }
   .products-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
