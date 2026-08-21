@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAMART Enterprise - Administrator Authentication</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="wp-admin-body wp-login-screen">
+
+  <div class="wp-login-wrapper">
+    <div class="wp-login-card">
+      <div class="wp-login-logo">
+        <span class="logo-icon">🛍️</span>
+        <span class="logo-text"><span class="wp-ram-dark">RAM</span><span class="wp-art-blue">ART</span></span>
+      </div>
+      <h2 class="wp-login-title">Private Store Administration</h2>
+      <p class="wp-login-subtitle">Restricted Access • Authorized Administrators Only</p>
+
+      <div id="loginErrorMsg" class="wp-alert wp-alert-danger" style="display: none;"></div>
+
+      <form id="adminLoginForm" onsubmit="handleAdminLogin(event)">
+        <div class="wp-form-group">
+          <label for="loginUsername">Administrator Username or Email</label>
+          <input type="text" id="loginUsername" class="wp-input" required placeholder="admin" autocomplete="username">
+        </div>
+
+        <div class="wp-form-group">
+          <label for="loginPassword">Administrator Password</label>
+          <input type="password" id="loginPassword" class="wp-input" required placeholder="••••••••" autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="wp-btn wp-btn-primary wp-btn-block" id="loginSubmitBtn" style="padding: 0.75rem; font-size: 14px; margin-top: 0.5rem;">
+          Sign In to Dashboard →
+        </button>
+      </form>
+
+      <div class="wp-login-footer">
+        <div class="wp-login-hint">🔒 Protected by SHA-256 Server Authorization & Rate Limiting</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // If already authenticated, redirect to dashboard immediately
+    (async function checkExistingAuth() {
+      try {
+        const token = localStorage.getItem("ramart_admin_token");
+        if (token) {
+          const res = await fetch("/api/check-auth", {
+            headers: { "Authorization": "Bearer " + token }
+          });
+          const data = await res.json();
+          if (data && data.authenticated) {
+            window.location.href = "/admin/dashboard";
+          }
+        }
+      } catch (e) {}
+    })();
+
+    async function handleAdminLogin(e) {
+      e.preventDefault();
+      const username = document.getElementById("loginUsername").value.trim();
+      const password = document.getElementById("loginPassword").value;
+      const errorMsg = document.getElementById("loginErrorMsg");
+      const submitBtn = document.getElementById("loginSubmitBtn");
+
+      errorMsg.style.display = "none";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Authenticating...";
+
+      try {
+        const res = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          localStorage.setItem("ramart_admin_token", data.token);
+          localStorage.setItem("ramart_admin_user", data.username);
+          // Set cookie for browser page access
+          document.cookie = `ramart_admin_token=${data.token}; path=/; max-age=86400; SameSite=Strict`;
+          window.location.href = "/admin/dashboard";
+        } else {
+          errorMsg.textContent = data.error || "Invalid administrator credentials.";
+          errorMsg.style.display = "block";
+        }
+      } catch (err) {
+        errorMsg.textContent = "Server connection error. Please try again.";
+        errorMsg.style.display = "block";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Sign In to Dashboard →";
+      }
+    }
+  </script>
+</body>
+</html>

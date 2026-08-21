@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Your Order | RAMART Official Store</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    .track-wrapper {
+      max-width: 780px;
+      margin: 3rem auto 5rem;
+      padding: 0 1.25rem;
+    }
+    .track-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      box-shadow: var(--shadow-card);
+    }
+    .track-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .track-header h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 0.5rem;
+    }
+    .track-header p {
+      color: var(--slate-600);
+      font-size: 0.95rem;
+    }
+    .track-form-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1.2fr auto;
+      gap: 0.85rem;
+      align-items: flex-end;
+    }
+    .track-result-box {
+      margin-top: 2.5rem;
+      border-top: 1px solid var(--slate-200);
+      padding-top: 2rem;
+    }
+    .order-status-banner {
+      background: #0a0a0a;
+      color: #ffffff;
+      border: 1px solid var(--gold-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .timeline-container {
+      margin: 2.5rem 0;
+      position: relative;
+    }
+    .timeline-steps {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+    }
+    .timeline-steps::before {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      right: 20px;
+      height: 3px;
+      background: #e2e8f0;
+      z-index: 1;
+    }
+    .timeline-step {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 80px;
+    }
+    .step-bullet {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: #64748b;
+      margin-bottom: 0.5rem;
+      transition: var(--transition);
+    }
+    .timeline-step.completed .step-bullet {
+      background: #0a0a0a;
+      border-color: var(--gold-accent);
+      color: var(--gold-accent);
+    }
+    .timeline-step.current .step-bullet {
+      background: var(--deep-red);
+      border-color: var(--deep-red);
+      color: #ffffff;
+      box-shadow: 0 0 0 4px rgba(136, 19, 55, 0.2);
+    }
+    .step-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #475569;
+    }
+    .timeline-step.completed .step-title, .timeline-step.current .step-title {
+      color: var(--black);
+      font-weight: 800;
+    }
+    @media (max-width: 600px) {
+      .track-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <span id="topBarAnnouncement">🚀 Express Delivery across India | Real-time Package Tracking</span>
+      <div class="top-bar-links">
+        <a href="/" class="top-nav-link">← Return to Storefront</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="/" class="logo">
+        <span class="logo-icon">🛍️</span>
+        <span class="logo-text"><span class="brand-ram">RAM</span><span class="brand-art">ART</span></span>
+      </a>
+
+      <div class="header-actions">
+        <a href="/" class="action-btn">
+          <span>🛍️ Shop Storefront</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Track Order Form Container -->
+  <main class="track-wrapper">
+    <div class="track-card">
+      <div class="track-header">
+        <span class="badge hero-badge" style="background: rgba(136, 19, 55, 0.1); color: var(--deep-red); border-color: rgba(136, 19, 55, 0.2);">📦 LIVE SHIPMENT TRACKER</span>
+        <h1>Track Your Order</h1>
+        <p>Enter your RAMART Order Reference ID and Mobile Number or Email to view real-time status.</p>
+      </div>
+
+      <form id="trackOrderForm" onsubmit="handleTrackOrder(event)">
+        <div class="track-form-grid">
+          <div class="form-group" style="margin: 0;">
+            <label for="trackOrderId">Order Reference ID *</label>
+            <input type="text" id="trackOrderId" required placeholder="e.g. RAM-IND-123456" style="text-transform: uppercase;">
+          </div>
+          <div class="form-group" style="margin: 0;">
+            <label for="trackContact">Mobile Number or Email *</label>
+            <input type="text" id="trackContact" required placeholder="10-digit Phone or Email">
+          </div>
+          <button type="submit" class="btn btn-primary" id="trackSubmitBtn" style="padding: 0.75rem 1.5rem; white-space: nowrap;">
+            Track Order →
+          </button>
+        </div>
+      </form>
+
+      <div id="trackErrorMsg" class="promo-message error" style="display: none; margin-top: 1rem; text-align: center; font-size: 14px;"></div>
+
+      <!-- Live Order Results View -->
+      <div id="trackResultContainer" style="display: none;" class="track-result-box">
+        <div class="order-status-banner">
+          <div>
+            <div style="font-size: 12px; color: #94a3b8;">Order Reference</div>
+            <strong style="font-size: 18px; color: #ffffff;" id="resOrderId">RAM-IND-000000</strong>
+            <div style="font-size: 12px; color: #cbd5e1; margin-top: 2px;" id="resOrderDate">Placed on: --</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 12px; color: #94a3b8;">Status</div>
+            <span class="status-badge status-processing" id="resOrderStatus" style="font-size: 13px; font-weight: 800;">Pending</span>
+            <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;" id="resPaymentStatus">Payment: Pending</div>
+          </div>
+        </div>
+
+        <!-- Visual Timeline Tracker -->
+        <div class="timeline-container">
+          <h3 style="font-size: 15px; margin-bottom: 1.5rem; color: var(--black);">Shipment Progress:</h3>
+          <div class="timeline-steps" id="timelineStepsList">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Order Items & Shipping Address Breakdown -->
+        <div class="receipt-box" id="resReceiptBox" style="margin-top: 2rem;">
+          <!-- Injected via JS -->
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button class="btn btn-secondary btn-sm" onclick="window.print()">🖨️ Print GST Invoice</button>
+          <a href="/" class="btn btn-primary btn-sm">Continue Shopping →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    async function handleTrackOrder(e) {
+      e.preventDefault();
+      const orderId = document.getElementById("trackOrderId").value.trim().toUpperCase();
+      const contact = document.getElementById("trackContact").value.trim();
+      const errorMsg = document.getElementById("trackErrorMsg");
+      const submitBtn = document.getElementById("trackSubmitBtn");
+      const resultContainer = document.getElementById("trackResultContainer");
+
+      errorMsg.style.display = "none";
+      resultContainer.style.display = "none";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Checking...";
+
+      try {
+        const res = await fetch("/api/track-order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ orderId, contact })
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          renderOrderTrackingResult(data.order);
+          resultContainer.style.display = "block";
+        } else {
+          errorMsg.textContent = data.error || "Order not found. Please verify details.";
+          errorMsg.style.display = "block";
+        }
+      } catch (err) {
+        errorMsg.textContent = "Network error while looking up order.";
+        errorMsg.style.display = "block";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Track Order →";
+      }
+    }
+
+    function renderOrderTrackingResult(order) {
+      document.getElementById("resOrderId").textContent = order.id;
+      document.getElementById("resOrderDate").textContent = `Booking Date: ${order.date}`;
+      
+      const statusEl = document.getElementById("resOrderStatus");
+      statusEl.textContent = order.orderStatus;
+      statusEl.className = `status-badge status-${order.orderStatus.toLowerCase()}`;
+
+      document.getElementById("resPaymentStatus").textContent = `Payment (${order.paymentMethod}): ${order.paymentStatus}`;
+
+      // Render Timeline
+      const timelineEl = document.getElementById("timelineStepsList");
+      timelineEl.innerHTML = (order.timeline || []).map((step, idx) => `
+        <div class="timeline-step ${step.status}">
+          <div class="step-bullet">${step.status === 'completed' ? '✓' : idx + 1}</div>
+          <div class="step-title">${step.step}</div>
+        </div>
+      `).join("");
+
+      // Render Receipt Box
+      const receiptEl = document.getElementById("resReceiptBox");
+      const itemsList = order.items || [];
+
+      receiptEl.innerHTML = `
+        <div class="receipt-header-brand">
+          <strong><span class="brand-ram">RAM</span><span class="brand-art">ART</span> OFFICIAL GST TAX INVOICE</strong>
+          <span class="gstin-badge">GSTIN: 29AABCR8901M1Z5</span>
+        </div>
+        <div class="receipt-row"><strong>Customer:</strong> <span>${escapeHtml(order.customerName)}</span></div>
+        <div class="receipt-row"><strong>Contact:</strong> <span>+91 ${escapeHtml(order.phone)}</span></div>
+        <div class="receipt-row"><strong>Shipping Address:</strong> <span>${escapeHtml(order.address)}</span></div>
+        ${order.courierPartner ? `<div class="receipt-row" style="color:#0369a1; font-weight:700;"><strong>Shipping Partner:</strong> <span>🚚 ${escapeHtml(order.courierPartner)}</span></div>` : ''}
+        ${order.trackingNumber ? `<div class="receipt-row" style="color:#0369a1; font-weight:700;"><strong>Courier AWB / Tracking:</strong> <span>${escapeHtml(order.trackingNumber)}</span></div>` : ''}
+        ${order.trackingUrl ? `<div class="receipt-row"><a href="${escapeHtml(order.trackingUrl)}" target="_blank" class="btn btn-secondary btn-sm" style="margin-top:0.4rem; display:inline-block; font-size:11px;">Track Live on Courier Site ↗</a></div>` : ''}
+        
+        <div style="margin: 0.75rem 0; border-top: 1px solid #e2e8f0; padding-top: 0.5rem;">
+          <strong style="font-size: 13px; margin-bottom: 0.4rem; display: block;">Items in this Shipment:</strong>
+          <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
+            ${itemsList.map(it => `
+              <tr style="border-bottom: 1px solid #f1f5f9;">
+                <td style="padding: 4px 0;">${escapeHtml(it.name)}</td>
+                <td style="text-align: center;">x${it.quantity}</td>
+                <td style="text-align: right; font-weight: 700;">₹${Math.round(it.total).toLocaleString('en-IN')}</td>
+              </tr>
+            `).join("")}
+          </table>
+        </div>
+
+        <div class="receipt-row" style="color: #64748b; font-size: 12px;"><span>Subtotal:</span> <span>₹${Math.round(order.subtotal).toLocaleString('en-IN')}</span></div>
+        ${order.discount > 0 ? `<div class="receipt-row" style="color: #881337; font-size: 12px;"><span>Promo Discount:</span> <span>-₹${Math.round(order.discount).toLocaleString('en-IN')}</span></div>` : ''}
+        <div class="receipt-row" style="color: #64748b; font-size: 12px;"><span>Shipping Fee:</span> <span>${order.shippingFee === 0 ? 'FREE' : '₹' + order.shippingFee}</span></div>
+        <div class="receipt-row total-paid-highlight">
+          <span>Total Order Value:</span> <span>₹${Math.round(order.total).toLocaleString('en-IN')}</span>
+        </div>
+      `;
+    }
+
+    function escapeHtml(str) {
+      return String(str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    // Auto-fill query parameter if present: /track?id=RAM-IND-123456
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("id")) {
+      document.getElementById("trackOrderId").value = params.get("id");
+    }
+  </script>
+</body>
+</html>
