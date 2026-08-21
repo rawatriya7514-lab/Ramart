@@ -248,6 +248,108 @@
     </div>
   </main>
 
+  <!-- 15. CATEGORIES SECTION (Horizontal Carousel) -->
+  <section class="container categories-section" id="categoriesSection">
+    <div class="section-header-row">
+      <div class="section-title-wrapper">
+        <h2 class="section-title-clean">
+          <span class="text-white">Explore</span> <span class="text-red">Categories</span>
+        </h2>
+        <span class="section-subtext">Curated collections designed for modern lifestyle</span>
+      </div>
+    </div>
+
+    <div class="categories-carousel-track" id="categoriesCarousel">
+      <div class="category-card" onclick="selectCategoryFromDrawer('Speakers')">
+        <div class="cat-icon-box">
+          <span class="cat-icon-sym">🔊</span>
+        </div>
+        <h4 class="cat-name">Speakers</h4>
+        <span class="cat-count-sub">High-Fi Audio</span>
+      </div>
+
+      <div class="category-card" onclick="selectCategoryFromDrawer('Electronics')">
+        <div class="cat-icon-box">
+          <span class="cat-icon-sym">🎧</span>
+        </div>
+        <h4 class="cat-name">Headphones</h4>
+        <span class="cat-count-sub">Studio ANC</span>
+      </div>
+
+      <div class="category-card" onclick="selectCategoryFromDrawer('Wearables')">
+        <div class="cat-icon-box">
+          <span class="cat-icon-sym">⌚</span>
+        </div>
+        <h4 class="cat-name">Smart Watches</h4>
+        <span class="cat-count-sub">AMOLED Bezel</span>
+      </div>
+
+      <div class="category-card" onclick="selectCategoryFromDrawer('Accessories')">
+        <div class="cat-icon-box">
+          <span class="cat-icon-sym">⚡</span>
+        </div>
+        <h4 class="cat-name">Accessories</h4>
+        <span class="cat-count-sub">Fast Tech</span>
+      </div>
+
+      <div class="category-card" onclick="selectCategoryFromDrawer('Home & Living')">
+        <div class="cat-icon-box">
+          <span class="cat-icon-sym">💡</span>
+        </div>
+        <h4 class="cat-name">Smart Living</h4>
+        <span class="cat-count-sub">Connected Home</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16. BEST SELLERS SECTION -->
+  <section class="container showcase-section" id="bestSellersSection">
+    <div class="section-header-row">
+      <div class="section-title-wrapper">
+        <h2 class="section-title-clean">
+          <span>👑</span> <span class="text-white">Best</span> <span class="text-red">Sellers</span>
+        </h2>
+        <span class="section-subtext">Most loved & highest rated by Indian customers</span>
+      </div>
+      <a href="#productsSection" class="view-all-link" onclick="selectCategoryFromDrawer('bestsellers'); return false;">View All →</a>
+    </div>
+    <div class="products-grid" id="bestSellersGrid">
+      <!-- Generated dynamically by app.js -->
+    </div>
+  </section>
+
+  <!-- 17. NEW ARRIVALS SECTION -->
+  <section class="container showcase-section" id="newArrivalsSection">
+    <div class="section-header-row">
+      <div class="section-title-wrapper">
+        <h2 class="section-title-clean">
+          <span>✨</span> <span class="text-white">New</span> <span class="text-red">Arrivals</span>
+        </h2>
+        <span class="section-subtext">Freshly unveiled 2026 luxury flagship gear</span>
+      </div>
+      <a href="#productsSection" class="view-all-link" onclick="selectCategoryFromDrawer('new'); return false;">View All →</a>
+    </div>
+    <div class="products-grid" id="newArrivalsGrid">
+      <!-- Generated dynamically by app.js -->
+    </div>
+  </section>
+
+  <!-- 18. SPECIAL OFFERS SECTION -->
+  <section class="container showcase-section" id="specialOffersSection">
+    <div class="section-header-row">
+      <div class="section-title-wrapper">
+        <h2 class="section-title-clean">
+          <span>⚡</span> <span class="text-white">Special</span> <span class="text-red">Offers</span>
+        </h2>
+        <span class="section-subtext">Limited-time privilege discounts & festive deals</span>
+      </div>
+      <a href="#productsSection" class="view-all-link" onclick="selectCategoryFromDrawer('trending'); return false;">View All →</a>
+    </div>
+    <div class="products-grid" id="specialOffersGrid">
+      <!-- Generated dynamically by app.js -->
+    </div>
+  </section>
+
   <!-- Shopping Cart Drawer -->
   <div class="cart-drawer-overlay" id="cartOverlay"></div>
   <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart">
@@ -539,26 +641,30 @@
     </div>
   </footer>
 
-  <!-- Mobile App-Style Bottom Navigation Bar -->
+  <!-- 20. Mobile App-Style Bottom Navigation Bar -->
   <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
-    <a href="./#productsSection" class="bottom-nav-item active" id="bNavHome">
+    <a href="#productsSection" class="bottom-nav-item active" id="bNavShop" onclick="setBottomNavActive('bNavShop');">
       <span class="bnav-icon">🛍️</span>
       <span class="bnav-label">Shop</span>
+      <span class="bnav-active-bar"></span>
     </a>
-    <a href="#categoryTabs" class="bottom-nav-item" id="bNavCategories" onclick="scrollToCategories(event)">
+    <a href="#categoriesSection" class="bottom-nav-item" id="bNavCategories" onclick="setBottomNavActive('bNavCategories');">
       <span class="bnav-icon">🏷️</span>
       <span class="bnav-label">Categories</span>
+      <span class="bnav-active-bar"></span>
     </a>
     <a href="track.html" class="bottom-nav-item" id="bNavTrack">
       <span class="bnav-icon">📦</span>
       <span class="bnav-label">Track</span>
+      <span class="bnav-active-bar"></span>
     </a>
-    <button class="bottom-nav-item bottom-cart-trigger" id="bNavCart" onclick="openCart()" aria-label="Open Shopping Bag">
+    <button class="bottom-nav-item bottom-cart-trigger" id="bNavCart" onclick="openCart(); return false;" aria-label="Open Shopping Bag">
       <span class="bnav-icon-wrapper">
         <span class="bnav-icon">🛒</span>
         <span class="cart-count bnav-cart-badge" id="bNavCartCount">0</span>
       </span>
       <span class="bnav-label">Bag</span>
+      <span class="bnav-active-bar"></span>
     </button>
   </nav>
 

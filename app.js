@@ -573,7 +573,52 @@ window.toggleWishlist = function(productId, btnEl) {
   showToast(added ? 'Added to Wishlist ❤️' : 'Removed from Wishlist', 'info');
 };
 
-// Render Products Grid
+// Reusable Product Card HTML Template
+function renderProductCard(product) {
+  const discountPercent = product.originalPrice ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : (product.discountPercent || 0);
+  const inStock = product.inStock !== false && (product.stockQuantity > 0 || product.stockQuantity === undefined);
+  const wishlisted = isProductWishlisted(product.id);
+
+  return `
+    <article class="product-card" onclick="openQuickView('${product.id}')">
+      <div class="card-img-wrapper">
+        ${product.badge ? `<span class="badge-tag badge-${product.badge.toLowerCase()}">${product.badge}</span>` : ''}
+        <button class="wishlist-heart-btn ${wishlisted ? 'active' : ''}" onclick="event.stopPropagation(); toggleWishlist('${product.id}', this)" aria-label="Wishlist">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="${wishlisted ? '#FF1E2D' : 'none'}" stroke="${wishlisted ? '#FF1E2D' : '#ffffff'}" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </button>
+        <img src="${product.image}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <span class="product-category">${product.category}</span>
+        <h3 class="product-title" title="${escapeHtml(product.name)}">${escapeHtml(product.name)}</h3>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <strong>${(product.rating || 5.0).toFixed(1)}</strong>
+          <span class="reviews-count">(${product.reviewsCount || 56})</span>
+        </div>
+        <div class="product-footer">
+          <div class="price-box">
+            <div class="price-row-inr">
+              <span class="price-current">${formatINR(product.price)}</span>
+              ${product.originalPrice ? `<span class="price-original">${formatINR(product.originalPrice)}</span>` : ''}
+            </div>
+            ${discountPercent > 0 ? `<span class="discount-badge-mini">${discountPercent}% OFF</span>` : ''}
+          </div>
+          ${inStock ? `
+            <button class="card-add-btn" onclick="event.stopPropagation(); addToCartById('${product.id}')" aria-label="Add to Bag">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              <span>Add to Bag</span>
+            </button>
+          ` : `
+            <button class="card-add-btn out-of-stock" disabled>Out of Stock</button>
+          `}
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+// Render Main Products Grid
 function renderProducts() {
   if (!productsGrid) return;
 
@@ -622,53 +667,40 @@ function renderProducts() {
         <p style="color: var(--text-secondary);">Try searching for different keywords or select a different category.</p>
       </div>
     `;
-    return;
+  } else {
+    productsGrid.innerHTML = filtered.map(renderProductCard).join('');
   }
 
-  productsGrid.innerHTML = filtered.map(product => {
-    const discountPercent = product.originalPrice ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : (product.discountPercent || 0);
-    const inStock = product.inStock !== false && (product.stockQuantity > 0 || product.stockQuantity === undefined);
-    const wishlisted = isProductWishlisted(product.id);
-
-    return `
-      <article class="product-card" onclick="openQuickView('${product.id}')">
-        <div class="card-img-wrapper">
-          ${product.badge ? `<span class="badge-tag badge-${product.badge.toLowerCase()}">${product.badge}</span>` : ''}
-          <button class="wishlist-heart-btn ${wishlisted ? 'active' : ''}" onclick="event.stopPropagation(); toggleWishlist('${product.id}', this)" aria-label="Wishlist">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="${wishlisted ? '#dc2626' : 'none'}" stroke="${wishlisted ? '#dc2626' : '#ffffff'}" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-          </button>
-          <img src="${product.image}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80'">
-        </div>
-        <div class="card-body">
-          <span class="product-category">${product.category}</span>
-          <h3 class="product-title" title="${escapeHtml(product.name)}">${escapeHtml(product.name)}</h3>
-          <div class="product-rating">
-            <span class="stars">★★★★★</span>
-            <strong>${(product.rating || 5.0).toFixed(1)}</strong>
-            <span class="reviews-count">(${product.reviewsCount || 56})</span>
-          </div>
-          <div class="product-footer">
-            <div class="price-box">
-              <div class="price-row-inr">
-                <span class="price-current">${formatINR(product.price)}</span>
-                ${product.originalPrice ? `<span class="price-original">${formatINR(product.originalPrice)}</span>` : ''}
-              </div>
-              ${discountPercent > 0 ? `<span class="discount-badge-mini">${discountPercent}% OFF</span>` : ''}
-            </div>
-            ${inStock ? `
-              <button class="card-add-btn" onclick="event.stopPropagation(); addToCartById('${product.id}')" aria-label="Add to Bag">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                <span>Add to Bag</span>
-              </button>
-            ` : `
-              <button class="card-add-btn out-of-stock" disabled>Out of Stock</button>
-            `}
-          </div>
-        </div>
-      </article>
-    `;
-  }).join('');
+  renderShowcaseGrids();
 }
+
+// Render Best Sellers, New Arrivals, and Special Offers
+function renderShowcaseGrids() {
+  const bestSellersGrid = document.getElementById('bestSellersGrid');
+  const newArrivalsGrid = document.getElementById('newArrivalsGrid');
+  const specialOffersGrid = document.getElementById('specialOffersGrid');
+
+  if (bestSellersGrid) {
+    const bestSellers = PRODUCTS.filter(p => (p.rating && p.rating >= 4.8) || (p.reviewsCount && p.reviewsCount >= 40)).slice(0, 4);
+    bestSellersGrid.innerHTML = (bestSellers.length > 0 ? bestSellers : PRODUCTS.slice(0, 4)).map(renderProductCard).join('');
+  }
+
+  if (newArrivalsGrid) {
+    const newArrivals = PRODUCTS.filter(p => (p.badge && p.badge.toLowerCase() === 'new') || !p.badge).slice(0, 4);
+    newArrivalsGrid.innerHTML = (newArrivals.length > 0 ? newArrivals : PRODUCTS.slice(2, 6)).map(renderProductCard).join('');
+  }
+
+  if (specialOffersGrid) {
+    const specialOffers = PRODUCTS.filter(p => (p.discountPercent && p.discountPercent >= 25) || (p.badge && p.badge.toLowerCase() === 'sale')).slice(0, 4);
+    specialOffersGrid.innerHTML = (specialOffers.length > 0 ? specialOffers : PRODUCTS.slice(0, 4)).map(renderProductCard).join('');
+  }
+}
+
+window.setBottomNavActive = function(id) {
+  document.querySelectorAll('.bottom-nav-item').forEach(el => {
+    el.classList.toggle('active', el.id === id);
+  });
+};
 
 // Cart Operations
 window.addToCartById = function(productId) {
