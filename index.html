@@ -594,7 +594,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- Footer -->
-  <footer class="main-footer">
+  <footer class="main-footer" id="mainFooter">
     <div class="container footer-content">
       <div class="footer-brand">
         <a href="./" class="logo footer-logo" aria-label="RAMART Home">
@@ -609,10 +609,11 @@
       <div class="footer-col">
         <h4>Exclusive Collections</h4>
         <ul>
-          <li><a href="#productsSection">Electronics & High-Fi Audio</a></li>
-          <li><a href="#productsSection">Prestige Smart Wearables</a></li>
-          <li><a href="#productsSection">Luxury Home & Living</a></li>
-          <li><a href="#productsSection">Premium Accessories</a></li>
+          <li><a href="#productsSection" onclick="selectCategoryFromDrawer('Electronics'); return false;">Electronics & High-Fi Audio</a></li>
+          <li><a href="#productsSection" onclick="selectCategoryFromDrawer('Speakers'); return false;">Premium Audio Speakers</a></li>
+          <li><a href="#productsSection" onclick="selectCategoryFromDrawer('Wearables'); return false;">Prestige Smart Wearables</a></li>
+          <li><a href="#productsSection" onclick="selectCategoryFromDrawer('Accessories'); return false;">Luxury Accessories</a></li>
+          <li><a href="#productsSection" onclick="selectCategoryFromDrawer('Home & Living'); return false;">Smart Home & Living</a></li>
         </ul>
       </div>
 
@@ -620,9 +621,9 @@
         <h4>Customer Care</h4>
         <ul>
           <li><a href="track.html">📦 Track Your Shipment</a></li>
-          <li><a href="#productsSection">Authenticity Guarantee</a></li>
-          <li><a href="#productsSection">7-Day Doorstep Replacement</a></li>
-          <li><a href="#productsSection">Help & FAQs</a></li>
+          <li><a href="#productsSection" onclick="openAccountModal(); return false;">🛡️ Authenticity Guarantee</a></li>
+          <li><a href="#productsSection" onclick="openAccountModal(); return false;">🔄 7-Day Doorstep Replacement</a></li>
+          <li><a href="#productsSection" onclick="openAccountModal(); return false;">💬 VIP Support & FAQs</a></li>
         </ul>
       </div>
 
@@ -630,7 +631,7 @@
         <h4>Privilege Club</h4>
         <p>Join the RAMART Privilege Club for private flash sales and festive invitations.</p>
         <div class="newsletter-form">
-          <input type="email" placeholder="Enter your email" id="newsletterEmail">
+          <input type="email" placeholder="Enter your email" id="newsletterEmail" aria-label="Email for Privilege Club">
           <button class="btn btn-primary btn-sm" onclick="subscribeNewsletter()">Join Club</button>
         </div>
       </div>
