@@ -211,6 +211,8 @@ button:active, .btn:active, .cat-tab:active {
   position: relative;
   flex-shrink: 0;
   line-height: 1;
+  background: transparent !important;
+  border: none !important;
 }
 
 .brand-logo-img,
@@ -219,8 +221,10 @@ button:active, .btn:active, .cat-tab:active {
   height: 40px !important;
   max-height: 40px !important;
   width: auto !important;
-  max-width: 155px !important;
+  max-width: 160px !important;
   object-fit: contain !important;
+  background: transparent !important;
+  border: none !important;
   filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.45));
   transition: var(--transition);
 }
@@ -233,10 +237,11 @@ button:active, .btn:active, .cat-tab:active {
 
 .footer-logo .brand-logo-img,
 .footer-logo img {
-  height: 52px !important;
-  max-height: 52px !important;
-  max-width: 180px !important;
+  height: 56px !important;
+  max-height: 56px !important;
+  max-width: 190px !important;
   margin-bottom: 0.85rem !important;
+  background: transparent !important;
 }
 
 .logo-icon {
