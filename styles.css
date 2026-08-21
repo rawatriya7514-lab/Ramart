@@ -2197,19 +2197,43 @@ button:active, .btn:active, .cat-tab:active {
   }
 
   .form-group input, .form-group select {
-    padding: 0.7rem 0.85rem;
-    font-size: 0.9rem;
-    min-height: 42px;
+    padding: 0.75rem 0.85rem;
+    font-size: 16px; /* Prevents auto-zoom on iOS */
+    min-height: 44px;
+  }
+
+  .search-wrapper input {
+    font-size: 16px; /* Prevents auto-zoom on iOS */
+  }
+
+  .header-actions a[title="Track Your Package"] {
+    display: none; /* Accessible in bottom nav */
+  }
+
+  .header-actions {
+    gap: 0.45rem;
+  }
+
+  .action-btn {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.82rem;
+    min-height: 38px;
+  }
+
+  .action-btn .btn-label {
+    display: none;
   }
 
   .payment-option {
-    padding: 0.8rem;
-    font-size: 0.85rem;
+    padding: 0.85rem;
+    font-size: 0.9rem;
+    min-height: 48px;
   }
 
   .submit-order-btn {
-    padding: 0.85rem;
-    font-size: 0.96rem;
+    padding: 0.9rem;
+    font-size: 1rem;
+    min-height: 48px;
   }
 
   /* Cart Drawer on Mobile */
@@ -2228,7 +2252,7 @@ button:active, .btn:active, .cat-tab:active {
   }
 
   .cart-footer {
-    padding: 1rem 1.15rem max(1.15rem, env(safe-area-inset-bottom, 0px));
+    padding: 1rem 1.15rem max(1.25rem, calc(1rem + env(safe-area-inset-bottom, 0px)));
   }
 
   /* Footer on Mobile */
@@ -2247,14 +2271,36 @@ button:active, .btn:active, .cat-tab:active {
     flex-direction: column;
   }
 
+  .newsletter-form input {
+    font-size: 16px; /* Prevents iOS auto-zoom */
+    min-height: 44px;
+  }
+
   .newsletter-form button {
     width: 100%;
-    padding: 0.7rem;
+    padding: 0.75rem;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: calc(75px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .main-footer {
+    padding-bottom: calc(85px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .mobile-bottom-nav {
+    height: calc(62px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 }
 
 @media (max-width: 380px) {
   .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.45rem;
   }
   .card-body {
@@ -2264,8 +2310,9 @@ button:active, .btn:active, .cat-tab:active {
     font-size: 0.96rem;
   }
   .add-cart-btn {
-    padding: 0.4rem 0.35rem;
+    padding: 0.45rem 0.35rem;
     font-size: 0.74rem;
+    min-height: 36px;
   }
   .hero-title {
     font-size: 1.55rem;

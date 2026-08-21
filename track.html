@@ -138,8 +138,11 @@
       font-weight: 800;
     }
     @media (max-width: 640px) {
+      body {
+        padding-bottom: calc(75px + env(safe-area-inset-bottom, 0px));
+      }
       .track-wrapper {
-        margin: 1.5rem auto 5rem;
+        margin: 1.5rem auto 6rem;
         padding: 0 1rem;
       }
       .track-card {
@@ -152,6 +155,10 @@
       .track-form-grid {
         grid-template-columns: 1fr;
         gap: 0.85rem;
+      }
+      .track-form-grid input {
+        font-size: 16px;
+        min-height: 44px;
       }
       .timeline-steps {
         flex-direction: column;
