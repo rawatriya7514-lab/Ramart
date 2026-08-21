@@ -119,6 +119,9 @@ function applyStoreSettings() {
 function renderCategoryTabs() {
   categoryTabs.innerHTML = `
     <button class="cat-tab ${activeCategory === 'all' ? 'active' : ''}" data-category="all">All Products</button>
+    <button class="cat-tab ${activeCategory === 'trending' ? 'active' : ''}" data-category="trending">🔥 Trending Deals</button>
+    <button class="cat-tab ${activeCategory === 'bestsellers' ? 'active' : ''}" data-category="bestsellers">⚡ Best Sellers</button>
+    <button class="cat-tab ${activeCategory === 'new' ? 'active' : ''}" data-category="new">✨ New Arrivals</button>
     ${CATEGORIES.map(cat => `
       <button class="cat-tab ${activeCategory === cat ? 'active' : ''}" data-category="${escapeHtml(cat)}">${escapeHtml(cat)}</button>
     `).join("")}
@@ -177,10 +180,20 @@ function setupEventListeners() {
     quickViewModal.classList.remove("open");
   });
 
+  const closeAccountModalBtn = document.getElementById("closeAccountModal");
+  if (closeAccountModalBtn) {
+    closeAccountModalBtn.addEventListener("click", () => {
+      const modal = document.getElementById("accountModal");
+      if (modal) modal.classList.remove("open");
+    });
+  }
+
   window.addEventListener("click", (e) => {
     if (e.target === quickViewModal) quickViewModal.classList.remove("open");
     if (e.target === checkoutModal) checkoutModal.classList.remove("open");
     if (e.target === orderSuccessModal) orderSuccessModal.classList.remove("open");
+    const accModal = document.getElementById("accountModal");
+    if (e.target === accModal) accModal.classList.remove("open");
   });
 
   checkoutForm.addEventListener("submit", handleCheckoutSubmit);
@@ -189,6 +202,12 @@ function setupEventListeners() {
     orderSuccessModal.classList.remove("open");
   });
 }
+
+// VIP / Account Modal Trigger
+window.openAccountModal = function() {
+  const modal = document.getElementById("accountModal");
+  if (modal) modal.classList.add("open");
+};
 
 // Payment method switcher
 window.togglePaymentFields = function(method) {
@@ -200,7 +219,19 @@ window.togglePaymentFields = function(method) {
 // Render Products Grid
 function renderProducts() {
   let filtered = PRODUCTS.filter(product => {
-    const matchesCategory = activeCategory === "all" || product.category === activeCategory;
+    let matchesCategory = true;
+    if (activeCategory === "all") {
+      matchesCategory = true;
+    } else if (activeCategory === "trending") {
+      matchesCategory = (product.badge && (product.badge.toLowerCase() === 'popular' || product.badge.toLowerCase() === 'sale' || product.badge.toLowerCase() === 'trending')) || (product.discountPercent && product.discountPercent >= 20);
+    } else if (activeCategory === "bestsellers") {
+      matchesCategory = (product.rating && product.rating >= 4.7) || (product.reviewsCount && product.reviewsCount >= 40);
+    } else if (activeCategory === "new") {
+      matchesCategory = (product.badge && product.badge.toLowerCase() === 'new') || !product.badge;
+    } else {
+      matchesCategory = product.category === activeCategory;
+    }
+
     const matchesSearch = !searchQuery || 
       product.name.toLowerCase().includes(searchQuery) || 
       product.description.toLowerCase().includes(searchQuery) ||
@@ -225,17 +256,17 @@ function renderProducts() {
       productsGrid.innerHTML = `
         <div class="no-results" style="padding: 4rem 1rem;">
           <div class="no-results-icon">🛍️</div>
-          <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--black);">Store Catalog Ready</h3>
-          <p style="color: var(--slate-600); max-width: 480px; margin: 0 auto 1.5rem;">The store database is clean. Log in to the Admin Dashboard to add your real products.</p>
-          <a href="/admin" class="btn btn-primary btn-sm">Open Admin Panel →</a>
+          <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: #ffffff;">Store Catalog Ready</h3>
+          <p style="color: var(--text-secondary); max-width: 480px; margin: 0 auto 1.5rem;">The store database is active and ready. New flagship collections will appear shortly.</p>
+          <a href="/#productsSection" class="btn btn-primary btn-sm">Refresh Catalog</a>
         </div>
       `;
     } else {
       productsGrid.innerHTML = `
         <div class="no-results">
           <div class="no-results-icon">🔍</div>
-          <h3>No matching products found</h3>
-          <p>Try searching for different keywords or select a different category.</p>
+          <h3 style="color: #ffffff; margin-bottom: 0.5rem;">No matching products found</h3>
+          <p style="color: var(--text-secondary);">Try searching for different keywords or select a different category.</p>
         </div>
       `;
     }
@@ -248,10 +279,10 @@ function renderProducts() {
 
     return `
       <article class="product-card">
-        <div class="card-img-wrapper">
+        <div class="card-img-wrapper" onclick="openQuickView('${product.id}')">
           ${product.badge ? `<span class="badge-tag badge-${product.badge.toLowerCase()}">${product.badge}</span>` : ''}
-          <img src="${product.image}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'300\\' height=\\'250\\' fill=\\'%23f1f5f9\\'><rect width=\'100%25\\' height=\'100%25\\' fill=\\'%23e2e8f0\\'/><text x=\'50%25\\' y=\'50%25\\' fill=\\'%2364748b\\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'16\\'>RAMART</text></svg>'">
-          <button class="quick-view-btn" onclick="openQuickView('${product.id}')">Quick View</button>
+          <img src="${product.image}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'300\\' height=\\'250\\' fill=\'%2309090b\\'><rect width=\\'100%25\\' height=\'100%25\\' fill=\\'%2313131a\\'/><text x=\'50%25\\' y=\'50%25\\' fill=\\'%23dc2626\\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\\'sans-serif\\' font-size=\'16\\'>RAMART</text></svg>'">
+          <button class="quick-view-btn" onclick="event.stopPropagation(); openQuickView('${product.id}')">Quick View</button>
         </div>
         <div class="card-body">
           <span class="product-category">${product.category}</span>
@@ -272,7 +303,7 @@ function renderProducts() {
             ${inStock ? `
               <button class="add-cart-btn" onclick="addToCartById('${product.id}')">Add to Bag</button>
             ` : `
-              <button class="add-cart-btn" disabled style="background: #94a3b8; border-color: #94a3b8; cursor: not-allowed;">Out of Stock</button>
+              <button class="add-cart-btn" disabled style="background: #334155; border-color: #334155; color: #94a3b8; cursor: not-allowed;">Out of Stock</button>
             `}
           </div>
         </div>
@@ -363,20 +394,22 @@ function calculateCart() {
 
 function updateCartUI() {
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  cartCountEl.textContent = totalItems;
-  drawerCartCountEl.textContent = totalItems;
+  if (cartCountEl) cartCountEl.textContent = totalItems;
+  if (drawerCartCountEl) drawerCartCountEl.textContent = totalItems;
+  const bNavCartCountEl = document.getElementById("bNavCartCount");
+  if (bNavCartCountEl) bNavCartCountEl.textContent = totalItems;
 
   const { subtotal, discountAmount, total } = calculateCart();
 
-  cartSubtotalEl.textContent = formatINR(subtotal);
-  cartTotalEl.textContent = formatINR(total);
+  if (cartSubtotalEl) cartSubtotalEl.textContent = formatINR(subtotal);
+  if (cartTotalEl) cartTotalEl.textContent = formatINR(total);
 
   if (activePromo && discountAmount > 0) {
-    discountRowEl.style.display = "flex";
-    discountPercentageEl.textContent = activePromo;
-    cartDiscountEl.textContent = `-${formatINR(discountAmount)}`;
+    if (discountRowEl) discountRowEl.style.display = "flex";
+    if (discountPercentageEl) discountPercentageEl.textContent = activePromo;
+    if (cartDiscountEl) cartDiscountEl.textContent = `-${formatINR(discountAmount)}`;
   } else {
-    discountRowEl.style.display = "none";
+    if (discountRowEl) discountRowEl.style.display = "none";
   }
 
   if (cart.length === 0) {
@@ -392,7 +425,7 @@ function updateCartUI() {
 
   cartItemsList.innerHTML = cart.map(item => `
     <div class="cart-item">
-      <img src="${item.image}" alt="${escapeHtml(item.name)}" class="cart-item-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'70\\' height=\\'70\\' fill=\'%23e2e8f0\\'><rect width=\'100%25\\' height=\'100%25\\' fill=\'%23cbd5e1\\'/></svg>'">
+      <img src="${item.image}" alt="${escapeHtml(item.name)}" class="cart-item-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'70\\' height=\\'70\\' fill=\'%23090c16\\'><rect width=\'100%25\\' height=\'100%25\\' fill=\'%23111625\\'/></svg>'">
       <div class="cart-item-details">
         <h4 class="cart-item-title">${escapeHtml(item.name)}</h4>
         <div class="cart-item-price">${formatINR(item.price * item.quantity)}</div>
@@ -449,7 +482,7 @@ window.openQuickView = function(productId) {
 
   quickViewContent.innerHTML = `
     <div class="quick-view-grid">
-      <img src="${product.image}" alt="${escapeHtml(product.name)}" class="quick-view-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'300\\' height=\\'250\\' fill=\'%23f1f5f9\\'><rect width=\'100%25\\' height=\'100%25\\' fill=\'%23e2e8f0\\'/></svg>'">
+      <img src="${product.image}" alt="${escapeHtml(product.name)}" class="quick-view-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'300\\' height=\\'250\\' fill=\'%23090c16\\'><rect width=\'100%25\\' height=\'100%25\\' fill=\'%23111625\\'/></svg>'">
       <div class="quick-view-info">
         <span class="product-category">${product.category}</span>
         <h2>${escapeHtml(product.name)}</h2>
@@ -621,3 +654,15 @@ function escapeHtml(str) {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 }
+
+// Category scroll helper for mobile navigation
+window.scrollToCategories = function(e) {
+  if (e) e.preventDefault();
+  const el = document.getElementById("categoryTabs") || document.getElementById("productsSection");
+  if (el) {
+    const yOffset = -70;
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }
+};
+

@@ -2,65 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="theme-color" content="#07090e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
   <title>Track Your Order | RAMART Official Store</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     .track-wrapper {
-      max-width: 780px;
-      margin: 3rem auto 5rem;
-      padding: 0 1.25rem;
+      max-width: 820px;
+      margin: 3.5rem auto 6rem;
+      padding: 0 1.5rem;
     }
     .track-card {
-      background: #ffffff;
-      border: 1px solid var(--slate-200);
-      border-radius: var(--radius-lg);
-      padding: 2.25rem;
+      background: var(--black-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      padding: 2.75rem;
       box-shadow: var(--shadow-card);
+      backdrop-filter: blur(20px);
     }
     .track-header {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.25rem;
     }
     .track-header h1 {
-      font-size: 1.85rem;
-      font-weight: 800;
-      color: var(--black);
-      margin-bottom: 0.5rem;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.5px;
     }
     .track-header p {
-      color: var(--slate-600);
-      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-size: 0.98rem;
     }
     .track-form-grid {
       display: grid;
       grid-template-columns: 1.2fr 1.2fr auto;
-      gap: 0.85rem;
+      gap: 1rem;
       align-items: flex-end;
     }
     .track-result-box {
-      margin-top: 2.5rem;
-      border-top: 1px solid var(--slate-200);
-      padding-top: 2rem;
+      margin-top: 2.75rem;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 2.25rem;
     }
     .order-status-banner {
-      background: #0a0a0a;
+      background: #000000;
       color: #ffffff;
-      border: 1px solid var(--gold-subtle);
-      border-radius: var(--radius-md);
-      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.25rem;
       flex-wrap: wrap;
       gap: 1rem;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
     }
     .timeline-container {
-      margin: 2.5rem 0;
+      margin: 3rem 0;
       position: relative;
     }
     .timeline-steps {
@@ -75,7 +82,7 @@
       left: 20px;
       right: 20px;
       height: 3px;
-      background: #e2e8f0;
+      background: rgba(255, 255, 255, 0.1);
       z-index: 1;
     }
     .timeline-step {
@@ -85,46 +92,88 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      width: 80px;
+      width: 90px;
     }
     .step-bullet {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      background: #ffffff;
-      border: 3px solid #cbd5e1;
+      background: #000000;
+      border: 2px solid rgba(255, 255, 255, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 13px;
       font-weight: 800;
-      color: #64748b;
-      margin-bottom: 0.5rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
       transition: var(--transition);
     }
     .timeline-step.completed .step-bullet {
-      background: #0a0a0a;
+      background: var(--red-primary);
       border-color: var(--gold-accent);
-      color: var(--gold-accent);
+      color: #ffffff;
+      box-shadow: var(--red-glow);
     }
     .timeline-step.current .step-bullet {
-      background: var(--deep-red);
-      border-color: var(--deep-red);
+      background: var(--red-primary);
+      border-color: var(--red-hover);
       color: #ffffff;
-      box-shadow: 0 0 0 4px rgba(136, 19, 55, 0.2);
+      box-shadow: var(--red-glow-lg);
+      animation: pulseGlow 2s infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 10px rgba(220, 38, 38, 0.4); }
+      50% { box-shadow: 0 0 25px rgba(220, 38, 38, 0.8); }
     }
     .step-title {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      color: #475569;
+      color: var(--text-secondary);
     }
     .timeline-step.completed .step-title, .timeline-step.current .step-title {
-      color: var(--black);
+      color: #ffffff;
       font-weight: 800;
     }
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
+      .track-wrapper {
+        margin: 1.5rem auto 5rem;
+        padding: 0 1rem;
+      }
+      .track-card {
+        padding: 1.75rem 1.25rem;
+        border-radius: var(--radius-lg);
+      }
+      .track-header h1 {
+        font-size: 1.6rem;
+      }
       .track-form-grid {
         grid-template-columns: 1fr;
+        gap: 0.85rem;
+      }
+      .timeline-steps {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding-left: 1rem;
+      }
+      .timeline-steps::before {
+        top: 15px;
+        bottom: 15px;
+        left: 28px;
+        right: auto;
+        width: 3px;
+        height: auto;
+      }
+      .timeline-step {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        width: 100%;
+        gap: 1.1rem;
+      }
+      .step-bullet {
+        margin-bottom: 0;
+        flex-shrink: 0;
       }
     }
   </style>
@@ -325,5 +374,21 @@
       document.getElementById("trackOrderId").value = params.get("id");
     }
   </script>
+
+  <!-- Mobile App-Style Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <a href="/" class="bottom-nav-item">
+      <span class="bnav-icon">🛍️</span>
+      <span class="bnav-label">Shop</span>
+    </a>
+    <a href="/#productsSection" class="bottom-nav-item">
+      <span class="bnav-icon">🏷️</span>
+      <span class="bnav-label">Categories</span>
+    </a>
+    <a href="/track" class="bottom-nav-item active">
+      <span class="bnav-icon">📦</span>
+      <span class="bnav-label">Track</span>
+    </a>
+  </nav>
 </body>
 </html>

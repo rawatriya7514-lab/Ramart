@@ -972,13 +972,17 @@ class ProductionRequestHandler(http.server.SimpleHTTPRequestHandler):
                     "total": it["total_price"]
                 } for it in items]
 
+                order_st = order["order_status"]
+                is_cancelled = order_st == 'Cancelled'
                 timeline = [
                     {"step": "Order Placed", "status": "completed", "date": order["order_date"]},
-                    {"step": "Confirmed", "status": "completed" if order["order_status"] in ['Confirmed', 'Processing', 'Shipped', 'Delivered'] else ("current" if order["order_status"] == 'Pending' else "pending")},
-                    {"step": "Processing", "status": "completed" if order["order_status"] in ['Processing', 'Shipped', 'Delivered'] else ("current" if order["order_status"] == 'Confirmed' else "pending")},
-                    {"step": "Shipped", "status": "completed" if order["order_status"] in ['Shipped', 'Delivered'] else ("current" if order["order_status"] == 'Processing' else "pending")},
-                    {"step": "Delivered", "status": "completed" if order["order_status"] == 'Delivered' else ("current" if order["order_status"] == 'Shipped' else "pending")}
+                    {"step": "Confirmed", "status": "completed" if order_st in ['Confirmed', 'Packed', 'Dispatched', 'Shipped', 'Delivered'] else ("current" if order_st == 'Pending' else "pending")},
+                    {"step": "Processing", "status": "completed" if order_st in ['Packed', 'Dispatched', 'Shipped', 'Delivered'] else ("current" if order_st == 'Confirmed' else "pending")},
+                    {"step": "Dispatched", "status": "completed" if order_st in ['Dispatched', 'Shipped', 'Delivered'] else ("current" if order_st == 'Packed' else "pending")},
+                    {"step": "Delivered", "status": "completed" if order_st == 'Delivered' else ("current" if order_st in ['Dispatched', 'Shipped'] else "pending")}
                 ]
+                if is_cancelled:
+                    timeline.append({"step": "Cancelled", "status": "completed"})
 
                 return self.send_json({
                     "success": True,
