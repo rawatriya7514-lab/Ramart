@@ -966,13 +966,17 @@ button:active, .btn:active, .cat-tab:active {
   z-index: 60;
   box-shadow: -10px 0 40px rgba(0, 0, 0, 0.9);
   transform: translateX(100%);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
   display: flex;
   flex-direction: column;
 }
 
 .cart-drawer.open {
   transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .cart-header {
@@ -1223,12 +1227,14 @@ button:active, .btn:active, .cat-tab:active {
   padding: 1.5rem;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: var(--transition);
 }
 
 .modal-overlay.open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 .modal-card {
