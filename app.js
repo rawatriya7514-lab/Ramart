@@ -530,6 +530,11 @@ window.openAccountModal = function() {
   if (modal) modal.classList.add('open');
 };
 
+window.closeAccountModal = function() {
+  const modal = document.getElementById('accountModal');
+  if (modal) modal.classList.remove('open');
+};
+
 // Payment method switcher
 window.togglePaymentFields = function(method) {
   document.getElementById('upiFields').style.display = (method === 'upi') ? 'block' : 'none';
