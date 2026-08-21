@@ -196,33 +196,37 @@ button:active, .btn:active, .cat-tab:active {
 
 /* RAMART Brand Logo */
 .logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  font-size: 1.7rem;
-  font-weight: 900;
   text-decoration: none;
-  letter-spacing: 0.5px;
   position: relative;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
-.brand-logo-img {
-  height: 40px;
-  width: auto;
-  max-width: 140px;
-  object-fit: contain;
+.brand-logo-img,
+.logo img {
+  display: block;
+  height: 38px !important;
+  max-height: 38px !important;
+  width: auto !important;
+  max-width: 145px !important;
+  object-fit: contain !important;
   filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.45));
   transition: var(--transition);
-  display: block;
 }
 
-.brand-logo-img:hover {
+.brand-logo-img:hover,
+.logo img:hover {
   filter: drop-shadow(0 0 18px rgba(220, 38, 38, 0.8));
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
-.footer-logo .brand-logo-img {
-  height: 44px;
+.footer-logo .brand-logo-img,
+.footer-logo img {
+  height: 42px !important;
+  max-height: 42px !important;
+  max-width: 155px !important;
 }
 
 .logo-icon {
@@ -1880,12 +1884,14 @@ button:active, .btn:active, .cat-tab:active {
   }
 
   .logo {
-    font-size: 1.45rem;
+    max-height: 34px;
   }
 
-  .brand-logo-img {
-    height: 32px;
-    max-width: 100px;
+  .brand-logo-img,
+  .logo img {
+    height: 30px !important;
+    max-height: 30px !important;
+    max-width: 110px !important;
   }
 
   .search-wrapper {
@@ -2299,6 +2305,12 @@ button:active, .btn:active, .cat-tab:active {
 }
 
 @media (max-width: 380px) {
+  .brand-logo-img,
+  .logo img {
+    height: 26px !important;
+    max-height: 26px !important;
+    max-width: 95px !important;
+  }
   .products-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.45rem;
