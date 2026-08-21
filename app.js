@@ -433,16 +433,32 @@ function setupEventListeners() {
     });
   }
 
+  const mobileSearchInput = document.getElementById('mobileSearchInput');
+  const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+
+  function handleSearchInput(e) {
+    searchQuery = e.target.value.trim().toLowerCase();
+    if (searchInput && searchInput !== e.target) searchInput.value = e.target.value;
+    if (mobileSearchInput && mobileSearchInput !== e.target) mobileSearchInput.value = e.target.value;
+    renderProducts();
+  }
+
   if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      searchQuery = e.target.value.trim().toLowerCase();
-      renderProducts();
-    });
+    searchInput.addEventListener('input', handleSearchInput);
+  }
+  if (mobileSearchInput) {
+    mobileSearchInput.addEventListener('input', handleSearchInput);
   }
 
   if (searchBtn) {
     searchBtn.addEventListener('click', () => {
-      searchQuery = searchInput.value.trim().toLowerCase();
+      if (searchInput) searchQuery = searchInput.value.trim().toLowerCase();
+      renderProducts();
+    });
+  }
+  if (mobileSearchBtn) {
+    mobileSearchBtn.addEventListener('click', () => {
+      if (mobileSearchInput) searchQuery = mobileSearchInput.value.trim().toLowerCase();
       renderProducts();
     });
   }
@@ -993,3 +1009,34 @@ function subscribeNewsletter() {
 function escapeHtml(str) {
   return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
+
+// Mobile Slide-out Drawer Navigation
+window.toggleMobileNav = function(open) {
+  const drawer = document.getElementById('mobileNavDrawer');
+  const overlay = document.getElementById('mobileNavOverlay');
+  if (!drawer || !overlay) return;
+  if (typeof open === 'boolean') {
+    drawer.classList.toggle('open', open);
+    overlay.classList.toggle('open', open);
+  } else {
+    drawer.classList.toggle('open');
+    overlay.classList.toggle('open');
+  }
+};
+
+window.selectCategoryFromDrawer = function(cat) {
+  window.toggleMobileNav(false);
+  const targetTab = document.querySelector(`.cat-tab[data-category="${cat}"]`);
+  if (targetTab) {
+    targetTab.click();
+  } else {
+    activeCategory = cat;
+    document.querySelectorAll('.cat-tab').forEach(t => {
+      t.classList.toggle('active', t.getAttribute('data-category') === cat);
+    });
+    renderProducts();
+  }
+  const sec = document.getElementById('productsSection');
+  if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+};
+

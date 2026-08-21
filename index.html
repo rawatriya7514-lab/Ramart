@@ -20,45 +20,92 @@
   <!-- Top Announcement Bar -->
   <div class="top-bar">
     <div class="container top-bar-content">
-      <span id="topBarAnnouncement">⚡ <strong>RAMART EXCLUSIVE:</strong> Use coupon <strong>SAVE10</strong> for instant 10% privilege discount!</span>
-      <div class="top-bar-links">
-        <span id="topBarShipping">📦 Free Express Delivery across India on orders above ₹499</span>
-        <a href="track.html" class="top-nav-link"><span>📦 Track Order</span></a>
-      </div>
+      <span class="top-promo-text" id="topBarAnnouncement">
+        <span class="promo-icon">⚡</span>
+        <strong class="promo-brand-tag">RAMART EXCLUSIVE:</strong> 
+        <span>Grand Opening Sale! Use coupon</span> 
+        <strong class="promo-coupon-badge">SAVE10</strong> 
+        <span>for 10% instant discount!</span>
+      </span>
     </div>
   </div>
 
   <!-- Header / Navigation -->
   <header class="main-header">
     <div class="container header-container">
-      <a href="./" class="logo" aria-label="RAMART Home">
-        <img src="images/logo.png?v=20260821" alt="RAMART" class="brand-logo-img" width="130" height="38">
-      </a>
-
-      <!-- Search Bar -->
-      <div class="search-wrapper">
-        <input type="text" id="searchInput" placeholder="Search premium audio, smart wearables, electronics..." autocomplete="off">
-        <button id="searchBtn" aria-label="Search">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <div class="header-main-row">
+        <!-- LEFT: Hamburger Menu Icon -->
+        <button class="menu-toggle-btn" id="mobileMenuBtn" aria-label="Open Navigation Menu" onclick="toggleMobileNav()">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
+
+        <!-- CENTER/LEFT: RAMART Logo -->
+        <a href="./" class="logo" aria-label="RAMART Home">
+          <img src="images/logo.png?v=20260821" alt="RAMART" class="brand-logo-img" width="130" height="38">
+        </a>
+
+        <!-- Desktop Search Bar -->
+        <div class="search-wrapper desktop-search">
+          <input type="text" id="searchInput" placeholder="Search premium products..." autocomplete="off">
+          <button id="searchBtn" aria-label="Search">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#e0e7ff" stroke-width="2.3"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+        </div>
+
+        <!-- RIGHT: Actions & Shopping Bag Icon -->
+        <div class="header-actions">
+          <a href="track.html" class="action-btn desktop-only" title="Track Your Package">
+            <span>📦 Track Order</span>
+          </a>
+          <button id="accountBtn" class="action-btn desktop-only" onclick="openAccountModal()" title="Customer VIP Service" aria-label="Customer Account">
+            <span>👤 Support</span>
+          </button>
+          <button id="cartToggleBtn" class="action-btn cart-btn" aria-label="View Cart">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            <span class="cart-count" id="cartCount">0</span>
+            <span class="btn-label desktop-only">Bag</span>
+          </button>
+        </div>
       </div>
 
-      <!-- Action Buttons -->
-      <div class="header-actions">
-        <a href="track.html" class="action-btn" title="Track Your Package">
-          <span>📦 Track Order</span>
-        </a>
-        <button id="accountBtn" class="action-btn" onclick="openAccountModal()" title="Customer VIP Service" aria-label="Customer Account">
-          <span>👤 Support</span>
-        </button>
-        <button id="cartToggleBtn" class="action-btn cart-btn" aria-label="View Cart">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-          <span class="cart-count" id="cartCount">0</span>
-          <span class="btn-label">Bag</span>
+      <!-- Mobile Search Bar (Row 2 on mobile) -->
+      <div class="search-wrapper mobile-search">
+        <input type="text" id="mobileSearchInput" placeholder="Search premium products..." autocomplete="off">
+        <button id="mobileSearchBtn" aria-label="Search">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#e0e7ff" stroke-width="2.3"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Slide-out Drawer Navigation -->
+  <div class="mobile-drawer-overlay" id="mobileNavOverlay" onclick="toggleMobileNav(false)"></div>
+  <aside class="mobile-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation Menu">
+    <div class="mobile-drawer-header">
+      <a href="./" class="logo" aria-label="RAMART Home" onclick="toggleMobileNav(false)">
+        <img src="images/logo.png?v=20260821" alt="RAMART" class="brand-logo-img" width="120" height="34">
+      </a>
+      <button class="drawer-close-btn" onclick="toggleMobileNav(false)" aria-label="Close Menu">✕</button>
+    </div>
+    <div class="mobile-drawer-content">
+      <div class="drawer-section-title">Collections & Categories</div>
+      <nav class="drawer-nav-list">
+        <button class="drawer-nav-item" onclick="selectCategoryFromDrawer('all')">🛍️ All Products</button>
+        <button class="drawer-nav-item" onclick="selectCategoryFromDrawer('trending')">🔥 Trending Deals</button>
+        <button class="drawer-nav-item" onclick="selectCategoryFromDrawer('bestsellers')">👑 Best Sellers</button>
+        <button class="drawer-nav-item" onclick="selectCategoryFromDrawer('Electronics')">🎧 Electronics & Audio</button>
+        <button class="drawer-nav-item" onclick="selectCategoryFromDrawer('Wearables')">⌚ Prestige Wearables</button>
+        <button class="drawer-nav-item" onclick="selectCategoryFromDrawer('Accessories')">⚡ Mobile & Audio Accessories</button>
+        <button class="drawer-nav-item" onclick="selectCategoryFromDrawer('Home & Living')">💡 Smart Home & Living</button>
+      </nav>
+      <div class="drawer-section-title" style="margin-top: 1.5rem;">Customer Services</div>
+      <nav class="drawer-nav-list">
+        <a href="track.html" class="drawer-nav-item" onclick="toggleMobileNav(false)">📦 Track Live Order</a>
+        <button class="drawer-nav-item" onclick="openAccountModal(); toggleMobileNav(false);">👤 VIP Support & Concierge</button>
+        <a href="/admin/login.html" class="drawer-nav-item" onclick="toggleMobileNav(false)">🔒 Administrator Portal</a>
+      </nav>
+    </div>
+  </aside>
 
   <!-- Hero Section -->
   <section class="hero-section">
