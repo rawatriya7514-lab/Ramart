@@ -294,17 +294,28 @@
         if (res.ok && data.success) {
           renderOrderTrackingResult(data.order);
           resultContainer.style.display = "block";
-        } else {
-          errorMsg.textContent = data.error || "Order not found. Please verify details.";
-          errorMsg.style.display = "block";
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Track Order →";
+          return;
         }
       } catch (err) {
-        errorMsg.textContent = "Network error while looking up order.";
-        errorMsg.style.display = "block";
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Track Order →";
+        // Fallback to local storage on static host (GitHub Pages)
       }
+
+      // Check local storage orders
+      const localOrders = JSON.parse(localStorage.getItem("ramart_placed_orders") || "[]");
+      const matched = localOrders.find(o => o.id.toUpperCase() === orderId && (!contact || o.phone.includes(contact) || (o.email && o.email.toLowerCase().includes(contact.toLowerCase()))));
+
+      if (matched) {
+        renderOrderTrackingResult(matched);
+        resultContainer.style.display = "block";
+      } else {
+        errorMsg.textContent = "No matching order found. Please verify Order Reference ID and Mobile/Email.";
+        errorMsg.style.display = "block";
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Track Order →";
     }
 
     function renderOrderTrackingResult(order) {
@@ -338,26 +349,26 @@
         <div class="receipt-row"><strong>Customer:</strong> <span>${escapeHtml(order.customerName)}</span></div>
         <div class="receipt-row"><strong>Contact:</strong> <span>+91 ${escapeHtml(order.phone)}</span></div>
         <div class="receipt-row"><strong>Shipping Address:</strong> <span>${escapeHtml(order.address)}</span></div>
-        ${order.courierPartner ? `<div class="receipt-row" style="color:#0369a1; font-weight:700;"><strong>Shipping Partner:</strong> <span>🚚 ${escapeHtml(order.courierPartner)}</span></div>` : ''}
-        ${order.trackingNumber ? `<div class="receipt-row" style="color:#0369a1; font-weight:700;"><strong>Courier AWB / Tracking:</strong> <span>${escapeHtml(order.trackingNumber)}</span></div>` : ''}
+        ${order.courierPartner ? `<div class="receipt-row" style="color:var(--gold-accent); font-weight:700;"><strong>Shipping Partner:</strong> <span>🚚 ${escapeHtml(order.courierPartner)}</span></div>` : ''}
+        ${order.trackingNumber ? `<div class="receipt-row" style="color:var(--gold-accent); font-weight:700;"><strong>Courier AWB / Tracking:</strong> <span>${escapeHtml(order.trackingNumber)}</span></div>` : ''}
         ${order.trackingUrl ? `<div class="receipt-row"><a href="${escapeHtml(order.trackingUrl)}" target="_blank" class="btn btn-secondary btn-sm" style="margin-top:0.4rem; display:inline-block; font-size:11px;">Track Live on Courier Site ↗</a></div>` : ''}
         
-        <div style="margin: 0.75rem 0; border-top: 1px solid #e2e8f0; padding-top: 0.5rem;">
-          <strong style="font-size: 13px; margin-bottom: 0.4rem; display: block;">Items in this Shipment:</strong>
+        <div style="margin: 0.75rem 0; border-top: 1px solid var(--border-subtle); padding-top: 0.5rem;">
+          <strong style="font-size: 13px; margin-bottom: 0.4rem; display: block; color:#ffffff;">Items in this Shipment:</strong>
           <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
             ${itemsList.map(it => `
-              <tr style="border-bottom: 1px solid #f1f5f9;">
-                <td style="padding: 4px 0;">${escapeHtml(it.name)}</td>
-                <td style="text-align: center;">x${it.quantity}</td>
-                <td style="text-align: right; font-weight: 700;">₹${Math.round(it.total).toLocaleString('en-IN')}</td>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                <td style="padding: 4px 0; color:#cbd5e1;">${escapeHtml(it.name)}</td>
+                <td style="text-align: center; color:#94a3b8;">x${it.quantity}</td>
+                <td style="text-align: right; font-weight: 700; color:#ffffff;">₹${Math.round(it.total || it.price * it.quantity).toLocaleString('en-IN')}</td>
               </tr>
             `).join("")}
           </table>
         </div>
 
-        <div class="receipt-row" style="color: #64748b; font-size: 12px;"><span>Subtotal:</span> <span>₹${Math.round(order.subtotal).toLocaleString('en-IN')}</span></div>
-        ${order.discount > 0 ? `<div class="receipt-row" style="color: #881337; font-size: 12px;"><span>Promo Discount:</span> <span>-₹${Math.round(order.discount).toLocaleString('en-IN')}</span></div>` : ''}
-        <div class="receipt-row" style="color: #64748b; font-size: 12px;"><span>Shipping Fee:</span> <span>${order.shippingFee === 0 ? 'FREE' : '₹' + order.shippingFee}</span></div>
+        <div class="receipt-row" style="color: var(--text-secondary); font-size: 12px;"><span>Subtotal:</span> <span>₹${Math.round(order.subtotal).toLocaleString('en-IN')}</span></div>
+        ${order.discount > 0 ? `<div class="receipt-row" style="color: var(--gold-accent); font-size: 12px;"><span>Promo Discount:</span> <span>-₹${Math.round(order.discount).toLocaleString('en-IN')}</span></div>` : ''}
+        <div class="receipt-row" style="color: var(--text-secondary); font-size: 12px;"><span>Shipping Fee:</span> <span>${order.shippingFee === 0 ? 'FREE' : '₹' + order.shippingFee}</span></div>
         <div class="receipt-row total-paid-highlight">
           <span>Total Order Value:</span> <span>₹${Math.round(order.total).toLocaleString('en-IN')}</span>
         </div>
@@ -368,7 +379,7 @@
       return String(str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     }
 
-    // Auto-fill query parameter if present: /track?id=RAM-IND-123456
+    // Auto-fill query parameter if present: track.html?id=RAM-IND-123456
     const params = new URLSearchParams(window.location.search);
     if (params.get("id")) {
       document.getElementById("trackOrderId").value = params.get("id");
@@ -377,15 +388,15 @@
 
   <!-- Mobile App-Style Bottom Navigation Bar -->
   <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
-    <a href="/" class="bottom-nav-item">
+    <a href="./" class="bottom-nav-item">
       <span class="bnav-icon">🛍️</span>
       <span class="bnav-label">Shop</span>
     </a>
-    <a href="/#productsSection" class="bottom-nav-item">
+    <a href="./#categoryTabs" class="bottom-nav-item">
       <span class="bnav-icon">🏷️</span>
       <span class="bnav-label">Categories</span>
     </a>
-    <a href="/track" class="bottom-nav-item active">
+    <a href="track.html" class="bottom-nav-item active">
       <span class="bnav-icon">📦</span>
       <span class="bnav-label">Track</span>
     </a>
