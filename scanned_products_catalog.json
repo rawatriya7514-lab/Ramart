@@ -1,0 +1,499 @@
+[
+  {
+    "sku": "613",
+    "folder_id": "1V5ZIyHkY43qbvOHgWDVn5Xsm17AXbVAU",
+    "folder_url": "https://drive.google.com/drive/folders/1V5ZIyHkY43qbvOHgWDVn5Xsm17AXbVAU",
+    "image_count": 10,
+    "images": [
+      {
+        "file_id": "1AE4tQ3DTwenfQMFKc2byfJlVaiFlreFv",
+        "file_name": "1img.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1AE4tQ3DTwenfQMFKc2byfJlVaiFlreFv/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1AE4tQ3DTwenfQMFKc2byfJlVaiFlreFv&export=download"
+      },
+      {
+        "file_id": "1uXT88vnRYsWzcSX3F_8RelnX4C74G93d",
+        "file_name": "1mg.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1uXT88vnRYsWzcSX3F_8RelnX4C74G93d/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1uXT88vnRYsWzcSX3F_8RelnX4C74G93d&export=download"
+      },
+      {
+        "file_id": "1phUdAHlxmU5WUAAZmhZyY16adzyuw01R",
+        "file_name": "3_2652b1bd-5485-45e9-a24e-7315bb3c8aa1.png",
+        "mime": "image/png",
+        "drive_view": "https://drive.google.com/file/d/1phUdAHlxmU5WUAAZmhZyY16adzyuw01R/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1phUdAHlxmU5WUAAZmhZyY16adzyuw01R&export=download"
+      },
+      {
+        "file_id": "1kYwKNN3iQxxWN974A3lrCnkusOS4v5l3",
+        "file_name": "4_3cc7ce64-9f09-4999-bc6b-ab382cd0967c.png",
+        "mime": "image/png",
+        "drive_view": "https://drive.google.com/file/d/1kYwKNN3iQxxWN974A3lrCnkusOS4v5l3/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1kYwKNN3iQxxWN974A3lrCnkusOS4v5l3&export=download"
+      },
+      {
+        "file_id": "1S50rMMPIkpz21_4fUpeU4-jY37Zlilw1",
+        "file_name": "5_23703212-bf49-4862-a5ab-47a772360488.png",
+        "mime": "image/png",
+        "drive_view": "https://drive.google.com/file/d/1S50rMMPIkpz21_4fUpeU4-jY37Zlilw1/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1S50rMMPIkpz21_4fUpeU4-jY37Zlilw1&export=download"
+      },
+      {
+        "file_id": "1ficBI1Ca4l9VfkUiYgGUiIXlzxdnig56",
+        "file_name": "6_41cff039-42f1-42b0-9655-531a5d1a54ba.png",
+        "mime": "image/png",
+        "drive_view": "https://drive.google.com/file/d/1ficBI1Ca4l9VfkUiYgGUiIXlzxdnig56/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1ficBI1Ca4l9VfkUiYgGUiIXlzxdnig56&export=download"
+      },
+      {
+        "file_id": "15bB__UfFtNMMwJ5kgEjTWr6uAoPh7-K1",
+        "file_name": "9_d9f760d2-629f-4c0d-a9ed-25c954eaa3fd.png",
+        "mime": "image/png",
+        "drive_view": "https://drive.google.com/file/d/15bB__UfFtNMMwJ5kgEjTWr6uAoPh7-K1/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=15bB__UfFtNMMwJ5kgEjTWr6uAoPh7-K1&export=download"
+      },
+      {
+        "file_id": "1zcvUu-sQTR-8HvvOPCw9dfpNpOFKYyUl",
+        "file_name": "10_30f0a3bc-6600-4e7b-afe8-279abb2cf3cc.png",
+        "mime": "image/png",
+        "drive_view": "https://drive.google.com/file/d/1zcvUu-sQTR-8HvvOPCw9dfpNpOFKYyUl/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1zcvUu-sQTR-8HvvOPCw9dfpNpOFKYyUl&export=download"
+      },
+      {
+        "file_id": "1fjj8EtBCkhWoLnLvfIVofoYC8m-miID-",
+        "file_name": "11_67313e72-8754-411a-a171-7d11a569a20a.png",
+        "mime": "image/png",
+        "drive_view": "https://drive.google.com/file/d/1fjj8EtBCkhWoLnLvfIVofoYC8m-miID-/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1fjj8EtBCkhWoLnLvfIVofoYC8m-miID-&export=download"
+      },
+      {
+        "file_id": "1mfPhPneUhiTz_gkUex0eZbgKFlDFRzvf",
+        "file_name": "12_fc1aa187-bc25-4382-8dfd-af987ac9140c.png",
+        "mime": "image/png",
+        "drive_view": "https://drive.google.com/file/d/1mfPhPneUhiTz_gkUex0eZbgKFlDFRzvf/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1mfPhPneUhiTz_gkUex0eZbgKFlDFRzvf&export=download"
+      }
+    ]
+  },
+  {
+    "sku": "666",
+    "folder_id": "1qoCiBwvpDdBzffeP7Lq6_1oDmPi110Mg",
+    "folder_url": "https://drive.google.com/drive/folders/1qoCiBwvpDdBzffeP7Lq6_1oDmPi110Mg",
+    "image_count": 5,
+    "images": [
+      {
+        "file_id": "1amL3aZMWeBF4Do5o_tODpZdQas--EzH_",
+        "file_name": "Picsart_25-02-28_01-36-14-780.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1amL3aZMWeBF4Do5o_tODpZdQas--EzH_/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1amL3aZMWeBF4Do5o_tODpZdQas--EzH_&export=download"
+      },
+      {
+        "file_id": "192KnQAiw3l6dtlPVZIEAwPyo5a9mZrgl",
+        "file_name": "Picsart_25-02-28_01-36-50-881.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/192KnQAiw3l6dtlPVZIEAwPyo5a9mZrgl/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=192KnQAiw3l6dtlPVZIEAwPyo5a9mZrgl&export=download"
+      },
+      {
+        "file_id": "1HEvcywUg13LzrDleLhh1_bouB-RPu8Yf",
+        "file_name": "Picsart_25-02-28_01-37-25-653.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1HEvcywUg13LzrDleLhh1_bouB-RPu8Yf/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1HEvcywUg13LzrDleLhh1_bouB-RPu8Yf&export=download"
+      },
+      {
+        "file_id": "1VGDQXBaaoprbpLJ20EfvBuapbRcV6iDt",
+        "file_name": "Picsart_25-02-28_01-37-53-132.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1VGDQXBaaoprbpLJ20EfvBuapbRcV6iDt/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1VGDQXBaaoprbpLJ20EfvBuapbRcV6iDt&export=download"
+      },
+      {
+        "file_id": "1d8NA-6XIWrGxA2SHxOKqcOQpP2EKeVOw",
+        "file_name": "Picsart_25-02-28_01-38-26-793.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1d8NA-6XIWrGxA2SHxOKqcOQpP2EKeVOw/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1d8NA-6XIWrGxA2SHxOKqcOQpP2EKeVOw&export=download"
+      }
+    ]
+  },
+  {
+    "sku": "bt- cy-635",
+    "folder_id": "1dDeKTzffXrzc1MihQuHZrzuJPeWrfXOP",
+    "folder_url": "https://drive.google.com/drive/folders/1dDeKTzffXrzc1MihQuHZrzuJPeWrfXOP",
+    "image_count": 5,
+    "images": [
+      {
+        "file_id": "1Ca8PI8-_ShYKTjMxbV6vTWyVXIdEW6Vl",
+        "file_name": "Picsart_25-02-27_20-49-20-280.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1Ca8PI8-_ShYKTjMxbV6vTWyVXIdEW6Vl/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1Ca8PI8-_ShYKTjMxbV6vTWyVXIdEW6Vl&export=download"
+      },
+      {
+        "file_id": "1zStSnLMSdDb3y0TDg6_-F00fMbY3UMhF",
+        "file_name": "Picsart_25-02-27_20-50-06-661.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1zStSnLMSdDb3y0TDg6_-F00fMbY3UMhF/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1zStSnLMSdDb3y0TDg6_-F00fMbY3UMhF&export=download"
+      },
+      {
+        "file_id": "19gHU5rj2ANfLtuMyYuSBNafJnV7UXrM2",
+        "file_name": "Picsart_25-02-27_20-50-41-471.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/19gHU5rj2ANfLtuMyYuSBNafJnV7UXrM2/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=19gHU5rj2ANfLtuMyYuSBNafJnV7UXrM2&export=download"
+      },
+      {
+        "file_id": "1YpFouiWRK6iHY4uwyxtKOm2BQmKMV_8G",
+        "file_name": "Picsart_25-02-27_21-00-13-475.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1YpFouiWRK6iHY4uwyxtKOm2BQmKMV_8G/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1YpFouiWRK6iHY4uwyxtKOm2BQmKMV_8G&export=download"
+      },
+      {
+        "file_id": "1DgRzrnRlhAbv0xKSA3p1J1KyzKHJAjsK",
+        "file_name": "Picsart_25-02-27_21-01-29-931.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1DgRzrnRlhAbv0xKSA3p1J1KyzKHJAjsK/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1DgRzrnRlhAbv0xKSA3p1J1KyzKHJAjsK&export=download"
+      }
+    ]
+  },
+  {
+    "sku": "k12",
+    "folder_id": "1O6sQTCon1IjI82WsubpoNxYndaZ_X1un",
+    "folder_url": "https://drive.google.com/drive/folders/1O6sQTCon1IjI82WsubpoNxYndaZ_X1un",
+    "image_count": 7,
+    "images": [
+      {
+        "file_id": "1J9HVhHYB7vP0q7M00_q4g-5Fi7l6GbbM",
+        "file_name": "1.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1J9HVhHYB7vP0q7M00_q4g-5Fi7l6GbbM/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1J9HVhHYB7vP0q7M00_q4g-5Fi7l6GbbM&export=download"
+      },
+      {
+        "file_id": "1GcVHU_1qHzrooTriAw62JaYBbZPi2jP8",
+        "file_name": "2.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1GcVHU_1qHzrooTriAw62JaYBbZPi2jP8/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1GcVHU_1qHzrooTriAw62JaYBbZPi2jP8&export=download"
+      },
+      {
+        "file_id": "1P4P1rooz94B56KU6g9C-nr9A4aIplH5j",
+        "file_name": "3.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1P4P1rooz94B56KU6g9C-nr9A4aIplH5j/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1P4P1rooz94B56KU6g9C-nr9A4aIplH5j&export=download"
+      },
+      {
+        "file_id": "1seOY2TShnj47-P4FHzM-mL6v0MUb0KCu",
+        "file_name": "B1.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1seOY2TShnj47-P4FHzM-mL6v0MUb0KCu/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1seOY2TShnj47-P4FHzM-mL6v0MUb0KCu&export=download"
+      },
+      {
+        "file_id": "1BIqEPdxdfcHnXm6i43-IWcrKRV2jepNy",
+        "file_name": "B2.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1BIqEPdxdfcHnXm6i43-IWcrKRV2jepNy/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1BIqEPdxdfcHnXm6i43-IWcrKRV2jepNy&export=download"
+      },
+      {
+        "file_id": "1WBj8gHqyTZADg568EzF7h3kRj3e9W6Nu",
+        "file_name": "B3.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1WBj8gHqyTZADg568EzF7h3kRj3e9W6Nu/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1WBj8gHqyTZADg568EzF7h3kRj3e9W6Nu&export=download"
+      },
+      {
+        "file_id": "1Nr6ZvYVkVRaOGDADBj05_QdIbKsE4Dtp",
+        "file_name": "B4.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1Nr6ZvYVkVRaOGDADBj05_QdIbKsE4Dtp/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1Nr6ZvYVkVRaOGDADBj05_QdIbKsE4Dtp&export=download"
+      }
+    ]
+  },
+  {
+    "sku": "MAX 18",
+    "folder_id": "1AmRkirEB97_Y8T3w3UuPBbh46GwOut8u",
+    "folder_url": "https://drive.google.com/drive/folders/1AmRkirEB97_Y8T3w3UuPBbh46GwOut8u",
+    "image_count": 15,
+    "images": [
+      {
+        "file_id": "1mCr5qntxV-ig2EAZznysmxVGb_lstZC7",
+        "file_name": "1.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1mCr5qntxV-ig2EAZznysmxVGb_lstZC7/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1mCr5qntxV-ig2EAZznysmxVGb_lstZC7&export=download"
+      },
+      {
+        "file_id": "1rnpYmOLzoFUxFA86EO6OcPFeARpxZn-D",
+        "file_name": "2.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1rnpYmOLzoFUxFA86EO6OcPFeARpxZn-D/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1rnpYmOLzoFUxFA86EO6OcPFeARpxZn-D&export=download"
+      },
+      {
+        "file_id": "1cMwZhRvADsO-YXrgSKDk9lmr2TfOJOjh",
+        "file_name": "3.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1cMwZhRvADsO-YXrgSKDk9lmr2TfOJOjh/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1cMwZhRvADsO-YXrgSKDk9lmr2TfOJOjh&export=download"
+      },
+      {
+        "file_id": "1aZET9lb9vmQFgAkLCOz1xzQVecLh_Yqk",
+        "file_name": "Picsart_25-02-28_02-53-39-513.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1aZET9lb9vmQFgAkLCOz1xzQVecLh_Yqk/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1aZET9lb9vmQFgAkLCOz1xzQVecLh_Yqk&export=download"
+      },
+      {
+        "file_id": "1GHHGXLGFcKuJcemXL3TkABxACBgNc_Kc",
+        "file_name": "Picsart_25-02-28_02-54-08-082.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1GHHGXLGFcKuJcemXL3TkABxACBgNc_Kc/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1GHHGXLGFcKuJcemXL3TkABxACBgNc_Kc&export=download"
+      },
+      {
+        "file_id": "18Km5Dqa3QlREQhkoD0hWDUSau9NxoQRw",
+        "file_name": "RED 1.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/18Km5Dqa3QlREQhkoD0hWDUSau9NxoQRw/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=18Km5Dqa3QlREQhkoD0hWDUSau9NxoQRw&export=download"
+      },
+      {
+        "file_id": "1_Hd-t37kSpqHKlCShoNQlc1rJcom6vjG",
+        "file_name": "RED 2.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1_Hd-t37kSpqHKlCShoNQlc1rJcom6vjG/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1_Hd-t37kSpqHKlCShoNQlc1rJcom6vjG&export=download"
+      },
+      {
+        "file_id": "1q6_E7utgfZZ3KBe_o-_ccJ7940QPlJEr",
+        "file_name": "RED 3.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1q6_E7utgfZZ3KBe_o-_ccJ7940QPlJEr/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1q6_E7utgfZZ3KBe_o-_ccJ7940QPlJEr&export=download"
+      },
+      {
+        "file_id": "1tj-Xb-91tZS13UmY28uo3EQA6bCC9-9D",
+        "file_name": "RED 4.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1tj-Xb-91tZS13UmY28uo3EQA6bCC9-9D/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1tj-Xb-91tZS13UmY28uo3EQA6bCC9-9D&export=download"
+      },
+      {
+        "file_id": "1lZ5dID8E9AQuxjO5OftlMqvIa3cXpAnE",
+        "file_name": "RED 5.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1lZ5dID8E9AQuxjO5OftlMqvIa3cXpAnE/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1lZ5dID8E9AQuxjO5OftlMqvIa3cXpAnE&export=download"
+      },
+      {
+        "file_id": "1nLyGzf7X-o2eKyJm9kdAoyUEwmQnBeue",
+        "file_name": "WHT 1.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1nLyGzf7X-o2eKyJm9kdAoyUEwmQnBeue/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1nLyGzf7X-o2eKyJm9kdAoyUEwmQnBeue&export=download"
+      },
+      {
+        "file_id": "1Ex_GU2FzLSWUHOwu6pbHYSGXHvCDkhyQ",
+        "file_name": "WHT 2.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1Ex_GU2FzLSWUHOwu6pbHYSGXHvCDkhyQ/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1Ex_GU2FzLSWUHOwu6pbHYSGXHvCDkhyQ&export=download"
+      },
+      {
+        "file_id": "1YsHQkK_2QMHTkAonTPpnHlBayGAUjvsV",
+        "file_name": "WHT 3.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1YsHQkK_2QMHTkAonTPpnHlBayGAUjvsV/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1YsHQkK_2QMHTkAonTPpnHlBayGAUjvsV&export=download"
+      },
+      {
+        "file_id": "1tHm6hvl6o1l9wdF1bCVUF3dECX1PCtER",
+        "file_name": "WHT 4.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1tHm6hvl6o1l9wdF1bCVUF3dECX1PCtER/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1tHm6hvl6o1l9wdF1bCVUF3dECX1PCtER&export=download"
+      },
+      {
+        "file_id": "1imReCwvQmFEnVTUZKEC-j7u--iK55lxF",
+        "file_name": "WHT 5.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1imReCwvQmFEnVTUZKEC-j7u--iK55lxF/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1imReCwvQmFEnVTUZKEC-j7u--iK55lxF&export=download"
+      }
+    ]
+  },
+  {
+    "sku": "r1s-l tripod",
+    "folder_id": "1ORaIhl4ELWiHJEgr2MkDQdOq2xV_FjBz",
+    "folder_url": "https://drive.google.com/drive/folders/1ORaIhl4ELWiHJEgr2MkDQdOq2xV_FjBz",
+    "image_count": 9,
+    "images": [
+      {
+        "file_id": "1B4MQM0ujnzSiK73ypKW78F8sLdW-4izP",
+        "file_name": "Picsart_25-02-26_20-21-58-891.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1B4MQM0ujnzSiK73ypKW78F8sLdW-4izP/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1B4MQM0ujnzSiK73ypKW78F8sLdW-4izP&export=download"
+      },
+      {
+        "file_id": "1kjjAkjdCe0c4m-3xOsd5FBAu0FFS0_eD",
+        "file_name": "Picsart_25-02-26_20-25-08-579.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1kjjAkjdCe0c4m-3xOsd5FBAu0FFS0_eD/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1kjjAkjdCe0c4m-3xOsd5FBAu0FFS0_eD&export=download"
+      },
+      {
+        "file_id": "1CIhiVrHdV6SIP8FhtVc9oXHIXhl2C2-t",
+        "file_name": "Picsart_25-02-26_20-27-48-242.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1CIhiVrHdV6SIP8FhtVc9oXHIXhl2C2-t/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1CIhiVrHdV6SIP8FhtVc9oXHIXhl2C2-t&export=download"
+      },
+      {
+        "file_id": "1PZWrH1menuV6ENwmcyi_XQL6fhRV8EDG",
+        "file_name": "Picsart_25-02-26_20-28-26-125.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1PZWrH1menuV6ENwmcyi_XQL6fhRV8EDG/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1PZWrH1menuV6ENwmcyi_XQL6fhRV8EDG&export=download"
+      },
+      {
+        "file_id": "14cXpSEF8rbFNYe6bWTx8Cg_lPXDboUi-",
+        "file_name": "Picsart_25-02-26_20-29-01-388.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/14cXpSEF8rbFNYe6bWTx8Cg_lPXDboUi-/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=14cXpSEF8rbFNYe6bWTx8Cg_lPXDboUi-&export=download"
+      },
+      {
+        "file_id": "1aeXm1xMdl-bkPbZ4FGUArQVf0zv_jb7Y",
+        "file_name": "Picsart_25-02-26_20-29-36-334.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1aeXm1xMdl-bkPbZ4FGUArQVf0zv_jb7Y/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1aeXm1xMdl-bkPbZ4FGUArQVf0zv_jb7Y&export=download"
+      },
+      {
+        "file_id": "1FnJq1nZKmUvyV3WzePNcPguALP2comBH",
+        "file_name": "Picsart_25-02-26_20-30-06-038.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1FnJq1nZKmUvyV3WzePNcPguALP2comBH/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1FnJq1nZKmUvyV3WzePNcPguALP2comBH&export=download"
+      },
+      {
+        "file_id": "10OTVIHuPQhnxL34Gh1vFx-a45f1ebg-O",
+        "file_name": "Picsart_25-02-26_20-30-36-257.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/10OTVIHuPQhnxL34Gh1vFx-a45f1ebg-O/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=10OTVIHuPQhnxL34Gh1vFx-a45f1ebg-O&export=download"
+      },
+      {
+        "file_id": "1Ide0gJwunaiVuiZyzv8rzukpQ99BY66M",
+        "file_name": "Picsart_25-02-26_20-31-08-687.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1Ide0gJwunaiVuiZyzv8rzukpQ99BY66M/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1Ide0gJwunaiVuiZyzv8rzukpQ99BY66M&export=download"
+      }
+    ]
+  },
+  {
+    "sku": "STAR 4000",
+    "folder_id": "1IkwCkJ1aczj_5F0dMBwiJN_ZUKzm_RJe",
+    "folder_url": "https://drive.google.com/drive/folders/1IkwCkJ1aczj_5F0dMBwiJN_ZUKzm_RJe",
+    "image_count": 12,
+    "images": [
+      {
+        "file_id": "1Cx-M_59FmRudcVLM-1qChrHKOpNzsbG2",
+        "file_name": "Picsart_25-02-26_22-07-37-899.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1Cx-M_59FmRudcVLM-1qChrHKOpNzsbG2/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1Cx-M_59FmRudcVLM-1qChrHKOpNzsbG2&export=download"
+      },
+      {
+        "file_id": "1IhGJYpXt6KSdQ06315L0OZDmWqpfvUt1",
+        "file_name": "Picsart_25-02-26_22-08-48-991.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1IhGJYpXt6KSdQ06315L0OZDmWqpfvUt1/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1IhGJYpXt6KSdQ06315L0OZDmWqpfvUt1&export=download"
+      },
+      {
+        "file_id": "1ebBqu4n5vDQ0xNH1A4CYGCP0dqH6JFAs",
+        "file_name": "Picsart_25-02-26_22-09-29-689.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1ebBqu4n5vDQ0xNH1A4CYGCP0dqH6JFAs/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1ebBqu4n5vDQ0xNH1A4CYGCP0dqH6JFAs&export=download"
+      },
+      {
+        "file_id": "1lLGUi74ebhat2Y3wCulys-uE4cGT_EU4",
+        "file_name": "Picsart_25-02-26_22-09-58-695.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1lLGUi74ebhat2Y3wCulys-uE4cGT_EU4/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1lLGUi74ebhat2Y3wCulys-uE4cGT_EU4&export=download"
+      },
+      {
+        "file_id": "1EckAVGRQDVfsRjL1BxlcXRzFtin6A2_y",
+        "file_name": "Picsart_25-02-26_22-11-31-601.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1EckAVGRQDVfsRjL1BxlcXRzFtin6A2_y/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1EckAVGRQDVfsRjL1BxlcXRzFtin6A2_y&export=download"
+      },
+      {
+        "file_id": "1scSgv8ByIR69MjbzDilO8lh4tPvNX6DW",
+        "file_name": "Picsart_25-02-26_22-11-57-527.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1scSgv8ByIR69MjbzDilO8lh4tPvNX6DW/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1scSgv8ByIR69MjbzDilO8lh4tPvNX6DW&export=download"
+      },
+      {
+        "file_id": "1u-GeWOK1iPZuy57RViwF1tGWqhHFIZJY",
+        "file_name": "Picsart_25-02-26_22-12-30-516.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1u-GeWOK1iPZuy57RViwF1tGWqhHFIZJY/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1u-GeWOK1iPZuy57RViwF1tGWqhHFIZJY&export=download"
+      },
+      {
+        "file_id": "18-5_OhkkB9Ilyhb95jEBdhstozmQEWB4",
+        "file_name": "Picsart_25-02-26_22-13-00-841.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/18-5_OhkkB9Ilyhb95jEBdhstozmQEWB4/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=18-5_OhkkB9Ilyhb95jEBdhstozmQEWB4&export=download"
+      },
+      {
+        "file_id": "1eKJ7ORjOYEdYTqLs-jSvqow37-ohXaTv",
+        "file_name": "Picsart_25-02-26_22-16-01-400.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1eKJ7ORjOYEdYTqLs-jSvqow37-ohXaTv/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1eKJ7ORjOYEdYTqLs-jSvqow37-ohXaTv&export=download"
+      },
+      {
+        "file_id": "1mhPd3mnxXZUF6mngCcKw3rqV1D7_01p4",
+        "file_name": "Picsart_25-02-26_22-16-32-302.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1mhPd3mnxXZUF6mngCcKw3rqV1D7_01p4/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1mhPd3mnxXZUF6mngCcKw3rqV1D7_01p4&export=download"
+      },
+      {
+        "file_id": "1zOFZXY5G4BCEecwNRQoj_L76ulIzpF-2",
+        "file_name": "Picsart_25-02-26_22-17-16-207.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1zOFZXY5G4BCEecwNRQoj_L76ulIzpF-2/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1zOFZXY5G4BCEecwNRQoj_L76ulIzpF-2&export=download"
+      },
+      {
+        "file_id": "1RVbE1qjYDvYK5gOk3DEYdpF2G80UUEwE",
+        "file_name": "Picsart_25-02-26_22-17-43-984.jpg",
+        "mime": "image/jpeg",
+        "drive_view": "https://drive.google.com/file/d/1RVbE1qjYDvYK5gOk3DEYdpF2G80UUEwE/view",
+        "drive_direct": "https://drive.usercontent.google.com/download?id=1RVbE1qjYDvYK5gOk3DEYdpF2G80UUEwE&export=download"
+      }
+    ]
+  }
+]

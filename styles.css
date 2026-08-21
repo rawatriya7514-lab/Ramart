@@ -225,7 +225,9 @@ button:active, .btn:active, .cat-tab:active {
   object-fit: contain !important;
   background: transparent !important;
   border: none !important;
-  filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.45));
+  filter: drop-shadow(0 2px 10px rgba(220, 38, 38, 0.45));
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
   transition: var(--transition);
 }
 
@@ -242,6 +244,8 @@ button:active, .btn:active, .cat-tab:active {
   max-width: 190px !important;
   margin-bottom: 0.85rem !important;
   background: transparent !important;
+  filter: drop-shadow(0 2px 12px rgba(220, 38, 38, 0.45));
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .logo-icon {
