@@ -107,22 +107,43 @@
     </div>
   </aside>
 
-  <!-- Hero Section -->
+  <!-- 4. Hero Section -->
   <section class="hero-section">
     <div class="container hero-content">
       <div class="hero-text">
-        <span class="badge hero-badge">✨ 2026 LUXURY FLAGSHIP RELEASES</span>
-        <h1 class="hero-title">Premium Tech. <span class="text-gradient-red">Smart Lifestyle.</span></h1>
-        <p class="hero-subtitle">Discover products made for the way you live. Curated flagship electronics, smart wearables, and exquisite lifestyle audio crafted for peak performance, everyday luxury, and unmatched reliability.</p>
+        <!-- 5. HERO TOP BADGE -->
+        <div class="hero-badge">
+          <span class="badge-icon">✨</span>
+          <span class="badge-text">2026 LUXURY FLAGSHIP RELEASES</span>
+        </div>
+
+        <!-- 6. HERO MAIN HEADING -->
+        <h1 class="hero-title">
+          <span class="hero-line-1">Premium Tech. Smart</span>
+          <span class="hero-line-2"> Lifestyle.</span>
+        </h1>
+
+        <!-- 7. HERO DESCRIPTION -->
+        <div class="hero-description-block">
+          <p class="hero-desc-lead">Discover products made for the way you live.</p>
+          <p class="hero-subtitle">Curated flagship electronics, smart wearables, and exquisite lifestyle audio crafted for peak performance, everyday luxury, and unmatched reliability.</p>
+        </div>
+
+        <!-- 8. HERO BUTTONS -->
         <div class="hero-actions">
-          <a href="#productsSection" class="btn btn-primary">Shop All Deals ↓</a>
-          <a href="#featuredSection" class="btn btn-secondary">Explore Highlights</a>
+          <a href="#productsSection" class="btn btn-primary hero-btn-main">Shop All Deals ↓</a>
+          <a href="#featuredSection" class="btn btn-secondary hero-btn-sub">Explore Highlights</a>
         </div>
       </div>
-      <div class="hero-card">
+
+      <!-- 9. HERO PRODUCT VISUAL -->
+      <div class="hero-visual-wrapper">
+        <div class="hero-glow-aura"></div>
         <div class="hero-card-inner">
           <div class="featured-tag">🔥 TRENDING DEAL</div>
-          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80" alt="RAMART Pro Wireless ANC Headphones" class="hero-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' fill=\'%2309090b\'><rect width=\'100%25\' height=\'100%25\' fill=\'%2313131a\'/><text x=\'50%25\' y=\'50%25\' fill=\'%23dc2626\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'20\'>RAMART Audio</text></svg>'">
+          <div class="hero-img-container">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=85" alt="RAMART Pro Studio ANC Wireless Headphones" class="hero-img" loading="eager">
+          </div>
           <div class="hero-card-details">
             <h3><span class="brand-ram">RAM</span><span class="brand-art">ART</span> Pro Studio ANC Wireless Headphones</h3>
             <div class="hero-price">
@@ -137,54 +158,76 @@
     </div>
   </section>
 
-  <!-- Features Value Props -->
+  <!-- 10. FEATURE BENEFITS CONTAINER -->
   <section class="features-bar" id="featuredSection">
-    <div class="container features-grid">
-      <div class="feature-item">
-        <div class="feature-icon">🚚</div>
-        <div>
-          <h4>Pan-India Express</h4>
-          <p>Fast dispatch to 19,000+ pincodes</p>
+    <div class="container">
+      <div class="features-container-card">
+        <div class="feature-col feature-col-shipping">
+          <div class="feature-icon-circle icon-circle-red">🚚</div>
+          <div class="feature-text-block">
+            <h4 class="feature-title">Free Shipping</h4>
+            <p class="feature-subtitle">Pan India</p>
+          </div>
         </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🛡️</div>
-        <div>
-          <h4>100% Genuine Certified</h4>
-          <p>Direct warranty & official GST tax invoices</p>
+
+        <div class="feature-col feature-col-payment">
+          <div class="feature-icon-circle icon-circle-green">🛡️</div>
+          <div class="feature-text-block">
+            <h4 class="feature-title">Secure Payment</h4>
+            <p class="feature-subtitle">100% Safe</p>
+          </div>
         </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">⚡</div>
-        <div>
-          <h4>Secure Instant Payments</h4>
-          <p>UPI, Cards, Razorpay & COD option</p>
+
+        <div class="feature-col feature-col-support">
+          <div class="feature-icon-circle icon-circle-blue">🎧</div>
+          <div class="feature-text-block">
+            <h4 class="feature-title">24/7 Support</h4>
+            <p class="feature-subtitle">Always Here</p>
+          </div>
         </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🔄</div>
-        <div>
-          <h4>7-Day Seamless Returns</h4>
-          <p>Doorstep pickup & instant replacement</p>
+
+        <div class="feature-col feature-col-quality">
+          <div class="feature-icon-circle icon-circle-gold">⭐</div>
+          <div class="feature-text-block">
+            <h4 class="feature-title">Premium Quality</h4>
+            <p class="feature-subtitle">Best in Class</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Main Store Section -->
+  <!-- 11. TRENDING DEALS & MAIN STORE SECTION -->
   <main class="container store-container" id="productsSection">
-    <!-- Filter & Category Header -->
+    <div class="section-header-row">
+      <div class="section-title-wrapper">
+        <h2 class="trending-deals-heading">
+          <span class="trending-fire">🔥</span>
+          <span class="text-white">Trending</span>
+          <span class="text-red">Deals</span>
+        </h2>
+        <span class="section-subtext">Handpicked luxury audio & flagship electronics</span>
+      </div>
+      <a href="#productsSection" class="view-all-link" onclick="selectCategoryFromDrawer('all'); return false;">View All →</a>
+    </div>
+
+    <!-- 15. CATEGORY CHIPS / TABS -->
     <div class="store-controls">
-      <div class="category-tabs" id="categoryTabs">
-        <button class="cat-tab active" data-category="all">All Products</button>
-        <button class="cat-tab" data-category="Electronics">Electronics</button>
-        <button class="cat-tab" data-category="Wearables">Wearables</button>
-        <button class="cat-tab" data-category="Home & Living">Home & Living</button>
-        <button class="cat-tab" data-category="Accessories">Accessories</button>
+      <div class="category-tabs-wrapper">
+        <div class="category-tabs" id="categoryTabs">
+          <button class="cat-tab active" data-category="all"><span class="cat-tab-icon">🛍️</span> All Products</button>
+          <button class="cat-tab" data-category="trending"><span class="cat-tab-icon">🔥</span> Trending</button>
+          <button class="cat-tab" data-category="bestsellers"><span class="cat-tab-icon">👑</span> Best Sellers</button>
+          <button class="cat-tab" data-category="Electronics"><span class="cat-tab-icon">🎧</span> Headphones & Audio</button>
+          <button class="cat-tab" data-category="Speakers"><span class="cat-tab-icon">🔊</span> Speakers</button>
+          <button class="cat-tab" data-category="Wearables"><span class="cat-tab-icon">⌚</span> Wearables</button>
+          <button class="cat-tab" data-category="Accessories"><span class="cat-tab-icon">⚡</span> Accessories</button>
+          <button class="cat-tab" data-category="Home & Living"><span class="cat-tab-icon">💡</span> Home & Living</button>
+        </div>
       </div>
 
       <div class="sorting-controls">
-        <label for="sortSelect">Sort by:</label>
+        <label for="sortSelect">Sort:</label>
         <select id="sortSelect" class="form-select">
           <option value="featured">Featured</option>
           <option value="price-low">Price: Low to High</option>
@@ -199,9 +242,9 @@
       <span id="resultsCount">Showing all products</span>
     </div>
 
-    <!-- Product Grid -->
+    <!-- 12. PRODUCT CARDS (2-Column Mobile Grid) -->
     <div class="products-grid" id="productsGrid">
-      <!-- Generated dynamically by app.js -->
+      <!-- Generated dynamically by app.js with luxury cards, wishlist heart & 2-column mobile layout -->
     </div>
   </main>
 

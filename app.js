@@ -537,6 +537,42 @@ window.togglePaymentFields = function(method) {
   document.getElementById('codFields').style.display = (method === 'cod') ? 'block' : 'none';
 };
 
+// Wishlist Management
+function getWishlist() {
+  try {
+    return JSON.parse(localStorage.getItem('ramart_wishlist') || '[]');
+  } catch (e) {
+    return [];
+  }
+}
+
+function isProductWishlisted(id) {
+  return getWishlist().includes(id);
+}
+
+window.toggleWishlist = function(productId, btnEl) {
+  let list = getWishlist();
+  const index = list.indexOf(productId);
+  let added = false;
+  if (index > -1) {
+    list.splice(index, 1);
+  } else {
+    list.push(productId);
+    added = true;
+  }
+  localStorage.setItem('ramart_wishlist', JSON.stringify(list));
+  
+  if (btnEl) {
+    btnEl.classList.toggle('active', added);
+    const svg = btnEl.querySelector('svg');
+    if (svg) {
+      svg.setAttribute('fill', added ? '#dc2626' : 'none');
+      svg.setAttribute('stroke', added ? '#dc2626' : '#ffffff');
+    }
+  }
+  showToast(added ? 'Added to Wishlist ❤️' : 'Removed from Wishlist', 'info');
+};
+
 // Render Products Grid
 function renderProducts() {
   if (!productsGrid) return;
@@ -551,6 +587,8 @@ function renderProducts() {
       matchesCategory = (product.rating && product.rating >= 4.8) || (product.reviewsCount && product.reviewsCount >= 40);
     } else if (activeCategory === 'new') {
       matchesCategory = (product.badge && product.badge.toLowerCase() === 'new') || !product.badge;
+    } else if (activeCategory === 'Speakers') {
+      matchesCategory = product.category.toLowerCase().includes('speaker') || product.name.toLowerCase().includes('speaker');
     } else {
       matchesCategory = product.category === activeCategory;
     }
@@ -590,21 +628,24 @@ function renderProducts() {
   productsGrid.innerHTML = filtered.map(product => {
     const discountPercent = product.originalPrice ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : (product.discountPercent || 0);
     const inStock = product.inStock !== false && (product.stockQuantity > 0 || product.stockQuantity === undefined);
+    const wishlisted = isProductWishlisted(product.id);
 
     return `
-      <article class="product-card">
-        <div class="card-img-wrapper" onclick="openQuickView('${product.id}')">
+      <article class="product-card" onclick="openQuickView('${product.id}')">
+        <div class="card-img-wrapper">
           ${product.badge ? `<span class="badge-tag badge-${product.badge.toLowerCase()}">${product.badge}</span>` : ''}
+          <button class="wishlist-heart-btn ${wishlisted ? 'active' : ''}" onclick="event.stopPropagation(); toggleWishlist('${product.id}', this)" aria-label="Wishlist">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="${wishlisted ? '#dc2626' : 'none'}" stroke="${wishlisted ? '#dc2626' : '#ffffff'}" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </button>
           <img src="${product.image}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80'">
-          <button class="quick-view-btn" onclick="event.stopPropagation(); openQuickView('${product.id}')">Quick View</button>
         </div>
         <div class="card-body">
           <span class="product-category">${product.category}</span>
-          <h3 class="product-title">${escapeHtml(product.name)}</h3>
+          <h3 class="product-title" title="${escapeHtml(product.name)}">${escapeHtml(product.name)}</h3>
           <div class="product-rating">
-            <span class="stars">★</span>
+            <span class="stars">★★★★★</span>
             <strong>${(product.rating || 5.0).toFixed(1)}</strong>
-            <span>(${product.reviewsCount || 0} reviews)</span>
+            <span class="reviews-count">(${product.reviewsCount || 56})</span>
           </div>
           <div class="product-footer">
             <div class="price-box">
@@ -615,9 +656,12 @@ function renderProducts() {
               ${discountPercent > 0 ? `<span class="discount-badge-mini">${discountPercent}% OFF</span>` : ''}
             </div>
             ${inStock ? `
-              <button class="add-cart-btn" onclick="addToCartById('${product.id}')">Add to Bag</button>
+              <button class="card-add-btn" onclick="event.stopPropagation(); addToCartById('${product.id}')" aria-label="Add to Bag">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <span>Add to Bag</span>
+              </button>
             ` : `
-              <button class="add-cart-btn" disabled style="background: #334155; border-color: #334155; color: #94a3b8; cursor: not-allowed;">Out of Stock</button>
+              <button class="card-add-btn out-of-stock" disabled>Out of Stock</button>
             `}
           </div>
         </div>
